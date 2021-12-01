@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`transform basic 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {\\"title\\":\\"Hey\\"}
+</script>
+<script>
+
+</script>
+<svelte:head>
+<title>Hey</title>
+<meta property=\\"og:title\\" content=\\"Hey\\">
+</svelte:head>
+<div class=\\"markdown-body\\"><h1>Hello</h1>
+<ul>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+</ul>
+</div>"
+`;
+
+exports[`transform escapeCodeTagInterpolation 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {}
+</script>
+<script>
+
+</script>
+
+<div class=\\"markdown-body\\"><div>{hello}</div>
+<pre><code class=\\"language-svelte\\">&lt;div&gt;{hello}&lt;/div&gt;
+</code></pre>
+</div>"
+`;
+
+exports[`transform exposes frontmatter 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {\\"title\\":\\"Hey\\"}
+</script>
+<script>
+
+</script>
+<svelte:head>
+<title>Hey</title>
+<meta property=\\"og:title\\" content=\\"Hey\\">
+</svelte:head>
+<div class=\\"markdown-body\\"><h1>Hello</h1>
+</div>"
+`;
+
+exports[`transform frontmatter interpolation 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {}
+</script>
+<script>
+
+</script>
+
+<div class=\\"markdown-body\\"><hr>
+<h2>name: ‘My Cool App’</h2>
+<h1>Hello World</h1>
+<p>This is {frontmatter.name}</p>
+</div>"
+`;
+
+exports[`transform script 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {}
+</script>
+<script lang=\\"ts\\">
+
+import Foo from './Foo.vue'
+
+</script>
+
+<div class=\\"markdown-body\\"><h1>Hello</h1>
+</div>"
+`;
+
+exports[`transform style 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {}
+</script>
+<script>
+
+</script>
+
+<div class=\\"markdown-body\\"><h1>Hello</h1>
+<style>h1 { color: red }</style></div>"
+`;
+
+exports[`transform use component 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {\\"title\\":\\"Markdown to Svelte\\"}
+</script>
+<script>
+
+    import MyComponent from './MyComponent.svelte'
+
+</script>
+<svelte:head>
+<title>Markdown to Svelte</title>
+<meta property=\\"og:title\\" content=\\"Markdown to Svelte\\">
+</svelte:head>
+<div class=\\"markdown-body\\"><h1>Convert Markdown to Svelte Component</h1>
+<ul>
+<li>List</li>
+<li>List</li>
+<li>List</li>
+</ul>
+
+<p><MyComponent>You can use Svelte components in Markdown</MyComponent></p>
+</div>"
+`;
