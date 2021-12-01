@@ -4,7 +4,6 @@ Markdown with Svelte for Vite
 
 _`vite-plugin-svelte-md` is heavily inspired by [vite-plugin-md](https://github.com/antfu/vite-plugin-md) package._
 
-<!--
 [![NPM license](https://img.shields.io/npm/l/vite-plugin-svelte-md.svg)](https://www.npmjs.com/package/vite-plugin-svelte-md)
 [![NPM version](https://img.shields.io/npm/v/vite-plugin-svelte-md.svg)](https://www.npmjs.com/package/vite-plugin-svelte-md)
 [![NPM downloads](https://img.shields.io/badge/dynamic/json.svg?label=downloads&colorB=green&suffix=/day&query=$.downloads&uri=https://api.npmjs.org//downloads/point/last-day/vite-plugin-svelte-md&maxAge=3600)](http://www.npmtrends.com/vite-plugin-svelte-md)
@@ -14,7 +13,6 @@ _`vite-plugin-svelte-md` is heavily inspired by [vite-plugin-md](https://github.
 [![NPM downloads](https://img.shields.io/npm/dt/vite-plugin-svelte-md.svg)](http://www.npmtrends.com/vite-plugin-svelte-md)
 [![Build Status](https://github.com/ota-meshi/vite-plugin-svelte-md/workflows/CI/badge.svg?branch=main)](https://github.com/ota-meshi/vite-plugin-svelte-md/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/ota-meshi/vite-plugin-svelte-md/badge.svg?branch=main)](https://coveralls.io/github/ota-meshi/vite-plugin-svelte-md?branch=main)
--->
 
 ## 📛 Features
 
