@@ -102,8 +102,6 @@ function test() {
 }
 \`\`\`
 `
-        console.log(mdToSvelte("", md))
-        console.log("")
         chai.expect(mdToSvelte("", md)).toMatchSnapshot()
     })
     it("escape curly braces in code inline", () => {
