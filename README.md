@@ -92,10 +92,9 @@ import svelteMd from "vite-plugin-svelte-md";
 export default defineConfig({
   plugins: [
     svelte({
-      /* plugin options */
       extensions: [".svelte", ".md"], // <--
     }),
-    svelteMd(),
+    svelteMd(), // <--
   ],
 });
 ```
@@ -110,10 +109,12 @@ import svelteMd from "vite-plugin-svelte-md";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  extensions: [".svelte", ".md"],
+  extensions: [".svelte", ".md"], // <--
   kit: {
     vite: {
-      plugins: [svelteMd()],
+      plugins: [
+        svelteMd(), // <--
+      ],
     },
   },
 };
