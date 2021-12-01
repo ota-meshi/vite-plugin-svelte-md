@@ -20,6 +20,48 @@ export const frontmatter = {\\"title\\":\\"Hey\\"}
 </div>"
 `;
 
+exports[`transform escape curly braces in code block 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {}
+</script>
+<script>
+
+</script>
+
+<div class=\\"markdown-body\\"><pre><code>function test() &#123;
+    return foo
+&#125;
+</code></pre>
+</div>"
+`;
+
+exports[`transform escape curly braces in code inline 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {}
+</script>
+<script>
+
+</script>
+
+<div class=\\"markdown-body\\"><p><code>&#123;...&#125;</code></p>
+</div>"
+`;
+
+exports[`transform escape curly braces in fence 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {}
+</script>
+<script>
+
+</script>
+
+<div class=\\"markdown-body\\"><pre><code class=\\"language-js\\">function test() &#123;
+ return foo
+&#125;
+</code></pre>
+</div>"
+`;
+
 exports[`transform escapeCodeTagInterpolation 1`] = `
 "<script context=\\"module\\">
 export const frontmatter = {}
@@ -29,7 +71,7 @@ export const frontmatter = {}
 </script>
 
 <div class=\\"markdown-body\\"><div>{hello}</div>
-<pre><code class=\\"language-svelte\\">&lt;div&gt;{hello}&lt;/div&gt;
+<pre><code class=\\"language-svelte\\">&lt;div&gt;&#123;hello&#125;&lt;/div&gt;
 </code></pre>
 </div>"
 `;
