@@ -94,4 +94,30 @@ title: Markdown to Svelte
 `
         chai.expect(mdToSvelte("", md)).toMatchSnapshot()
     })
+    it("escape curly braces in fence", () => {
+        const md = `
+\`\`\`js
+function test() {
+ return foo
+}
+\`\`\`
+`
+        console.log(mdToSvelte("", md))
+        console.log("")
+        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
+    })
+    it("escape curly braces in code inline", () => {
+        const md = `
+\`{...}\`
+`
+        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
+    })
+    it("escape curly braces in code block", () => {
+        const md = `
+    function test() {
+        return foo
+    }
+`
+        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
+    })
 })
