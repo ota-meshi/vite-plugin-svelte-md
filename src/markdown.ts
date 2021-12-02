@@ -107,9 +107,9 @@ export function createMarkdownProcessor(
     markdownIt.use(svelteTags).use(svelteCurlyBracesEscape)
 
     options.markdownItUses.forEach((e) => {
-        const [plugin, options] = toArray(e)
+        const [plugin, ...options] = toArray(e)
 
-        markdownIt.use(plugin, options)
+        markdownIt.use(plugin, ...options)
     })
 
     return (id: string, text: string) => {
