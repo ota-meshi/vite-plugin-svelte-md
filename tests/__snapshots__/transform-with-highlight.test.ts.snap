@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`transform with highlight highlight 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {\\"title\\":\\"Hey\\"}
+</script>
+<script>
+
+</script>
+<svelte:head>
+<title>Hey</title>
+<meta property=\\"og:title\\" content=\\"Hey\\">
+</svelte:head>
+<div class=\\"markdown-body\\"><h1>Hello</h1>
+<ul>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+</ul>
+<pre class=\\"language-js\\"><code><span class=\\"token keyword\\">function</span> <span class=\\"token function\\">test</span><span class=\\"token punctuation\\">(</span><span class=\\"token punctuation\\">)</span> <span class=\\"token punctuation\\">&#123;</span>
+ <span class=\\"token keyword\\">return</span> foo
+<span class=\\"token punctuation\\">&#125;</span>
+</code></pre>
+</div>"
+`;
+
+exports[`transform with highlight highlight svelte 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {\\"title\\":\\"Hello Svelte\\"}
+</script>
+<script>
+
+</script>
+<svelte:head>
+<title>Hello Svelte</title>
+<meta property=\\"og:title\\" content=\\"Hello Svelte\\">
+</svelte:head>
+<div class=\\"markdown-body\\"><h1>Hello Svelte</h1>
+<pre class=\\"language-svelte\\"><code><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>script</span><span class=\\"token punctuation\\">></span></span><span class=\\"token script\\"><span class=\\"token language-javascript\\">
+	<span class=\\"token keyword\\">let</span> name <span class=\\"token operator\\">=</span> <span class=\\"token string\\">'world'</span><span class=\\"token punctuation\\">;</span>
+
+	<span class=\\"token keyword\\">let</span> cats <span class=\\"token operator\\">=</span> <span class=\\"token punctuation\\">[</span>
+		<span class=\\"token punctuation\\">&#123;</span> id<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'J---aiyznGQ'</span><span class=\\"token punctuation\\">,</span> name<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'Keyboard Cat'</span> <span class=\\"token punctuation\\">&#125;</span><span class=\\"token punctuation\\">,</span>
+		<span class=\\"token punctuation\\">&#123;</span> id<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'z_AbfPXTKms'</span><span class=\\"token punctuation\\">,</span> name<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'Maru'</span> <span class=\\"token punctuation\\">&#125;</span><span class=\\"token punctuation\\">,</span>
+		<span class=\\"token punctuation\\">&#123;</span> id<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'OUtn3pvWmpg'</span><span class=\\"token punctuation\\">,</span> name<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'Henri The Existential Cat'</span> <span class=\\"token punctuation\\">&#125;</span>
+	<span class=\\"token punctuation\\">]</span><span class=\\"token punctuation\\">;</span>
+</span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>script</span><span class=\\"token punctuation\\">></span></span>
+
+<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>h1</span><span class=\\"token punctuation\\">></span></span>Hello <span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span>name<span class=\\"token punctuation\\">&#125;</span></span>!<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>h1</span><span class=\\"token punctuation\\">></span></span>
+
+<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>ul</span><span class=\\"token punctuation\\">></span></span>
+	<span class=\\"token each\\"><span class=\\"token punctuation\\">&#123;</span><span class=\\"token keyword\\">#each</span> <span class=\\"token language-javascript\\">cats </span><span class=\\"token keyword\\">as</span> <span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span> id<span class=\\"token punctuation\\">,</span> name <span class=\\"token punctuation\\">&#125;</span><span class=\\"token punctuation\\">,</span> i<span class=\\"token punctuation\\">&#125;</span></span></span>
+		<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>li</span><span class=\\"token punctuation\\">></span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>a</span> <span class=\\"token attr-name\\">target</span><span class=\\"token attr-value\\"><span class=\\"token punctuation\\">=</span><span class=\\"token punctuation\\">\\"</span>_blank<span class=\\"token punctuation\\">\\"</span></span> <span class=\\"token attr-name\\"><span class=\\"token namespace\\">href=\\"https:</span></span>//<span class=\\"token attr-name\\">www.youtube.com</span>/<span class=\\"token attr-name\\">watch?v=</span><span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span>id<span class=\\"token punctuation\\">&#125;</span></span><span class=\\"token attr-name\\">\\"</span><span class=\\"token punctuation\\">></span></span>
+			<span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span>i <span class=\\"token operator\\">+</span> <span class=\\"token number\\">1</span><span class=\\"token punctuation\\">&#125;</span></span>: <span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span>name<span class=\\"token punctuation\\">&#125;</span></span>
+		<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>a</span><span class=\\"token punctuation\\">></span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>li</span><span class=\\"token punctuation\\">></span></span>
+	<span class=\\"token each\\"><span class=\\"token punctuation\\">&#123;</span><span class=\\"token keyword\\">/each</span><span class=\\"token punctuation\\">&#125;</span></span>
+<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>ul</span><span class=\\"token punctuation\\">></span></span>
+</code></pre>
+</div>"
+`;
+
+exports[`transform with highlight highlight svelte with line numbers 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {\\"title\\":\\"Hello Svelte\\"}
+</script>
+<script>
+
+</script>
+<svelte:head>
+<title>Hello Svelte</title>
+<meta property=\\"og:title\\" content=\\"Hello Svelte\\">
+</svelte:head>
+<div class=\\"markdown-body\\"><h1>Hello Svelte</h1>
+<div class=\\"language-svelte line-numbers-mode\\">
+<pre class=\\"language-svelte\\"><code><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>script</span><span class=\\"token punctuation\\">></span></span><span class=\\"token script\\"><span class=\\"token language-javascript\\">
+	<span class=\\"token keyword\\">let</span> name <span class=\\"token operator\\">=</span> <span class=\\"token string\\">'world'</span><span class=\\"token punctuation\\">;</span>
+
+	<span class=\\"token keyword\\">let</span> cats <span class=\\"token operator\\">=</span> <span class=\\"token punctuation\\">[</span>
+		<span class=\\"token punctuation\\">&#123;</span> id<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'J---aiyznGQ'</span><span class=\\"token punctuation\\">,</span> name<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'Keyboard Cat'</span> <span class=\\"token punctuation\\">&#125;</span><span class=\\"token punctuation\\">,</span>
+		<span class=\\"token punctuation\\">&#123;</span> id<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'z_AbfPXTKms'</span><span class=\\"token punctuation\\">,</span> name<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'Maru'</span> <span class=\\"token punctuation\\">&#125;</span><span class=\\"token punctuation\\">,</span>
+		<span class=\\"token punctuation\\">&#123;</span> id<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'OUtn3pvWmpg'</span><span class=\\"token punctuation\\">,</span> name<span class=\\"token operator\\">:</span> <span class=\\"token string\\">'Henri The Existential Cat'</span> <span class=\\"token punctuation\\">&#125;</span>
+	<span class=\\"token punctuation\\">]</span><span class=\\"token punctuation\\">;</span>
+</span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>script</span><span class=\\"token punctuation\\">></span></span>
+
+<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>h1</span><span class=\\"token punctuation\\">></span></span>Hello <span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span>name<span class=\\"token punctuation\\">&#125;</span></span>!<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>h1</span><span class=\\"token punctuation\\">></span></span>
+
+<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>ul</span><span class=\\"token punctuation\\">></span></span>
+	<span class=\\"token each\\"><span class=\\"token punctuation\\">&#123;</span><span class=\\"token keyword\\">#each</span> <span class=\\"token language-javascript\\">cats </span><span class=\\"token keyword\\">as</span> <span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span> id<span class=\\"token punctuation\\">,</span> name <span class=\\"token punctuation\\">&#125;</span><span class=\\"token punctuation\\">,</span> i<span class=\\"token punctuation\\">&#125;</span></span></span>
+		<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>li</span><span class=\\"token punctuation\\">></span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;</span>a</span> <span class=\\"token attr-name\\">target</span><span class=\\"token attr-value\\"><span class=\\"token punctuation\\">=</span><span class=\\"token punctuation\\">\\"</span>_blank<span class=\\"token punctuation\\">\\"</span></span> <span class=\\"token attr-name\\"><span class=\\"token namespace\\">href=\\"https:</span></span>//<span class=\\"token attr-name\\">www.youtube.com</span>/<span class=\\"token attr-name\\">watch?v=</span><span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span>id<span class=\\"token punctuation\\">&#125;</span></span><span class=\\"token attr-name\\">\\"</span><span class=\\"token punctuation\\">></span></span>
+			<span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span>i <span class=\\"token operator\\">+</span> <span class=\\"token number\\">1</span><span class=\\"token punctuation\\">&#125;</span></span>: <span class=\\"token language-javascript\\"><span class=\\"token punctuation\\">&#123;</span>name<span class=\\"token punctuation\\">&#125;</span></span>
+		<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>a</span><span class=\\"token punctuation\\">></span></span><span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>li</span><span class=\\"token punctuation\\">></span></span>
+	<span class=\\"token each\\"><span class=\\"token punctuation\\">&#123;</span><span class=\\"token keyword\\">/each</span><span class=\\"token punctuation\\">&#125;</span></span>
+<span class=\\"token tag\\"><span class=\\"token tag\\"><span class=\\"token punctuation\\">&lt;/</span>ul</span><span class=\\"token punctuation\\">></span></span>
+</code></pre>
+
+<div class=\\"line-numbers-wrapper\\"><span class=\\"line-number\\">1</span><br><span class=\\"line-number\\">2</span><br><span class=\\"line-number\\">3</span><br><span class=\\"line-number\\">4</span><br><span class=\\"line-number\\">5</span><br><span class=\\"line-number\\">6</span><br><span class=\\"line-number\\">7</span><br><span class=\\"line-number\\">8</span><br><span class=\\"line-number\\">9</span><br><span class=\\"line-number\\">10</span><br><span class=\\"line-number\\">11</span><br><span class=\\"line-number\\">12</span><br><span class=\\"line-number\\">13</span><br><span class=\\"line-number\\">14</span><br><span class=\\"line-number\\">15</span><br><span class=\\"line-number\\">16</span><br><span class=\\"line-number\\">17</span><br><span class=\\"line-number\\">18</span><br><span class=\\"line-number\\">19</span><br></div>
+</div></div>"
+`;
