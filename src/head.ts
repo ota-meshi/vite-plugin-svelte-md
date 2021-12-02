@@ -1,4 +1,5 @@
 import type { ResolvedOptions } from "./options"
+import { escapeBraces } from "./utils"
 
 export const headProperties = [
     "title",
@@ -90,7 +91,7 @@ export function headObjToTags(obj: HeadObject): string[] {
         }
     }
 
-    return tags
+    return tags.map(escapeBraces)
 
     /**
      * Convert to attributes string
