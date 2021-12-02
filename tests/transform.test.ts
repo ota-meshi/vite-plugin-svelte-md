@@ -118,4 +118,11 @@ function test() {
 `
         chai.expect(mdToSvelte("", md)).toMatchSnapshot()
     })
+    it("escape curly braces in header", () => {
+        const md = `---
+title: "\`{#if}\`"
+---
+`
+        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
+    })
 })

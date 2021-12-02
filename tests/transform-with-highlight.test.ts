@@ -1,3 +1,6 @@
+/* global process -- global */
+import fs from "fs"
+import path from "path"
 import { createMarkdownProcessor } from "../src/markdown"
 import { resolveOptions } from "../src/options"
 import chai from "chai"
@@ -102,4 +105,49 @@ title: Hello Svelte
 `
         chai.expect(mdToSvelte("", md)).toMatchSnapshot()
     })
+
+    describe("highlight with fixtures", () => {
+        const options = resolveOptions({
+            headEnabled: true,
+            markdownItOptions: { highlight },
+            markdownItUses: [lineNumbersPlugin],
+        })
+        const mdToSvelte = createMarkdownProcessor(options)
+        for (const fixture of iterateFiles(
+            path.resolve(__dirname, "./fixtures"),
+        )) {
+            it(fixture.name, () => {
+                const sfc = mdToSvelte(fixture.name, fixture.content)
+                if (process.argv.includes("--update")) {
+                    fs.writeFileSync(`${fixture.path}.svelte`, sfc, "utf-8")
+                }
+                chai.expect(sfc).toMatchSnapshot()
+            })
+        }
+    })
 })
+
+function* iterateFiles(rootDir: string): IterableIterator<{
+    content: string
+    name: string
+    path: string
+}> {
+    for (const filename of fs.readdirSync(rootDir)) {
+        if (filename.startsWith("_")) {
+            // ignore
+            continue
+        }
+        const abs = path.join(rootDir, filename)
+        if (fs.statSync(abs).isDirectory()) {
+            yield* iterateFiles(abs)
+        } else {
+            if (filename.endsWith(".md")) {
+                yield {
+                    content: fs.readFileSync(abs, "utf-8"),
+                    name: filename,
+                    path: abs,
+                }
+            }
+        }
+    }
+}

@@ -62,6 +62,20 @@ export const frontmatter = {}
 </div>"
 `;
 
+exports[`transform escape curly braces in header 1`] = `
+"<script context=\\"module\\">
+export const frontmatter = {\\"title\\":\\"\`{#if}\`\\"}
+</script>
+<script>
+
+</script>
+<svelte:head>
+<title>\`&#123;#if&#125;\`</title>
+<meta property=\\"og:title\\" content=\\"\`&#123;#if&#125;\`\\">
+</svelte:head>
+<div class=\\"markdown-body\\"></div>"
+`;
+
 exports[`transform escapeCodeTagInterpolation 1`] = `
 "<script context=\\"module\\">
 export const frontmatter = {}
