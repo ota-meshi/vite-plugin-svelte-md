@@ -89,10 +89,10 @@ import svelteMd from "vite-plugin-svelte-md";
 
 export default defineConfig({
   plugins: [
+    svelteMd(), // <--
     svelte({
       extensions: [".svelte", ".md"], // <--
     }),
-    svelteMd(), // <--
   ],
 });
 ```
