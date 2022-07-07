@@ -99,23 +99,30 @@ export default defineConfig({
 
 ### with [SvelteKit]
 
-Add it to `svelte.config.js`
+Edit `svelte.config.js`
 
 ```js
 // svelte.config.js
-import svelteMd from "vite-plugin-svelte-md";
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   extensions: [".svelte", ".md"], // <--
-  kit: {
-    vite: {
-      plugins: [
-        svelteMd(), // <--
-      ],
-    },
-  },
 };
+```
+
+Add it to `vite.config.js`
+
+```ts
+// vite.config.js
+import { defineConfig } from "vite";
+import { sveltekit } from "@sveltejs/kit/vite"
+import svelteMd from "vite-plugin-svelte-md";
+
+export default defineConfig({
+  plugins: [
+    svelteMd(), // <--
+    sveltekit(),
+  ],
+});
 ```
 
 [sveltekit]: https://kit.svelte.dev/
