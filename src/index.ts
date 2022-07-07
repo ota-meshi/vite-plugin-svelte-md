@@ -4,6 +4,7 @@ import { createMarkdownProcessor } from "./markdown"
 import type { Options } from "./options"
 import { resolveOptions } from "./options"
 
+export type { Options }
 /**
  * Creates vite-plugin-svelte-md
  */
