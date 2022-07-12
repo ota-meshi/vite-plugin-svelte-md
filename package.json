@@ -57,7 +57,7 @@
     "@ota-meshi/eslint-plugin": "^0.11.0",
     "@types/chai": "^4.2.22",
     "@types/escape-html": "^1.0.1",
-    "@types/estree": "0.0.52",
+    "@types/estree": "1.0.0",
     "@types/markdown-it": "^12.2.3",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.11.11",
