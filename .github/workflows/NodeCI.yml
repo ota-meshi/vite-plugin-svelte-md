@@ -22,13 +22,30 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x, 17.x]
+        node-version: [12.x, 14.x, 16.x, 17.x, 18.x]
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Install Packages
+      run: npm install --legacy-peer-deps
+    - name: Test
+      run: npm test
+  test-for-vite-v2:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }} with Vite v2
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Packages
+      run: npm install -D vite@2 --legacy-peer-deps
     - name: Install Packages
       run: npm install --legacy-peer-deps
     - name: Test
