@@ -1,16 +1,16 @@
-import { createMarkdownProcessor } from "../src/markdown"
-import { resolveOptions } from "../src/options"
-import chai from "chai"
-import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot"
+import { createMarkdownProcessor } from "../src/markdown";
+import { resolveOptions } from "../src/options";
+import chai from "chai";
+import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
 
-chai.use(jestSnapshotPlugin())
+chai.use(jestSnapshotPlugin());
 
 describe("transform with head", () => {
-    const options = resolveOptions({ headEnabled: true })
-    const mdToSvelte = createMarkdownProcessor(options)
+  const options = resolveOptions({ headEnabled: true });
+  const mdToSvelte = createMarkdownProcessor(options);
 
-    it("basic", () => {
-        const md = `---
+  it("basic", () => {
+    const md = `---
 title: Hey
 ---
 
@@ -19,12 +19,12 @@ title: Hey
 - A
 - B
 - C
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    it("head tag", () => {
-        const md = `---
+  it("head tag", () => {
+    const md = `---
 title: Hey
 ---
 
@@ -43,7 +43,7 @@ title: Hey
 </svelte:head>
 
 <MyComponent />
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
-})
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
+});
