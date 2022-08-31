@@ -1,24 +1,24 @@
 /* global process -- global */
-import fs from "fs"
-import path from "path"
-import { createMarkdownProcessor } from "../src/markdown"
-import { resolveOptions } from "../src/options"
-import chai from "chai"
-import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot"
-import highlight from "./highlight-tools/highlight"
-import lineNumbersPlugin from "./highlight-tools/line-numbers-plugin"
+import fs from "fs";
+import path from "path";
+import { createMarkdownProcessor } from "../src/markdown";
+import { resolveOptions } from "../src/options";
+import chai from "chai";
+import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
+import highlight from "./highlight-tools/highlight";
+import lineNumbersPlugin from "./highlight-tools/line-numbers-plugin";
 
-chai.use(jestSnapshotPlugin())
+chai.use(jestSnapshotPlugin());
 
 describe("transform with highlight", () => {
-    const options = resolveOptions({
-        headEnabled: true,
-        markdownItOptions: { highlight },
-    })
-    const mdToSvelte = createMarkdownProcessor(options)
+  const options = resolveOptions({
+    headEnabled: true,
+    markdownItOptions: { highlight },
+  });
+  const mdToSvelte = createMarkdownProcessor(options);
 
-    it("highlight", () => {
-        const md = `---
+  it("highlight", () => {
+    const md = `---
 title: Hey
 ---
 
@@ -33,11 +33,11 @@ function test() {
  return foo
 }
 \`\`\`
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
-    it("highlight svelte", () => {
-        const md = `---
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
+  it("highlight svelte", () => {
+    const md = `---
 title: Hello Svelte
 ---
 
@@ -64,18 +64,18 @@ title: Hello Svelte
 	{/each}
 </ul>
 \`\`\`
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    it("highlight svelte with line numbers", () => {
-        const options = resolveOptions({
-            headEnabled: true,
-            markdownItOptions: { highlight },
-            markdownItUses: [lineNumbersPlugin],
-        })
-        const mdToSvelte = createMarkdownProcessor(options)
-        const md = `---
+  it("highlight svelte with line numbers", () => {
+    const options = resolveOptions({
+      headEnabled: true,
+      markdownItOptions: { highlight },
+      markdownItUses: [lineNumbersPlugin],
+    });
+    const mdToSvelte = createMarkdownProcessor(options);
+    const md = `---
 title: Hello Svelte
 ---
 
@@ -102,52 +102,50 @@ title: Hello Svelte
 	{/each}
 </ul>
 \`\`\`
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    describe("highlight with fixtures", () => {
-        const options = resolveOptions({
-            headEnabled: true,
-            markdownItOptions: { highlight },
-            markdownItUses: [lineNumbersPlugin],
-        })
-        const mdToSvelte = createMarkdownProcessor(options)
-        for (const fixture of iterateFiles(
-            path.resolve(__dirname, "./fixtures"),
-        )) {
-            it(fixture.name, () => {
-                const sfc = mdToSvelte(fixture.name, fixture.content)
-                if (process.argv.includes("--update")) {
-                    fs.writeFileSync(`${fixture.path}.svelte`, sfc, "utf-8")
-                }
-                chai.expect(sfc).toMatchSnapshot()
-            })
+  describe("highlight with fixtures", () => {
+    const options = resolveOptions({
+      headEnabled: true,
+      markdownItOptions: { highlight },
+      markdownItUses: [lineNumbersPlugin],
+    });
+    const mdToSvelte = createMarkdownProcessor(options);
+    for (const fixture of iterateFiles(path.resolve(__dirname, "./fixtures"))) {
+      it(fixture.name, () => {
+        const sfc = mdToSvelte(fixture.name, fixture.content);
+        if (process.argv.includes("--update")) {
+          fs.writeFileSync(`${fixture.path}.svelte`, sfc, "utf-8");
         }
-    })
-})
+        chai.expect(sfc).toMatchSnapshot();
+      });
+    }
+  });
+});
 
 function* iterateFiles(rootDir: string): IterableIterator<{
-    content: string
-    name: string
-    path: string
+  content: string;
+  name: string;
+  path: string;
 }> {
-    for (const filename of fs.readdirSync(rootDir)) {
-        if (filename.startsWith("_")) {
-            // ignore
-            continue
-        }
-        const abs = path.join(rootDir, filename)
-        if (fs.statSync(abs).isDirectory()) {
-            yield* iterateFiles(abs)
-        } else {
-            if (filename.endsWith(".md")) {
-                yield {
-                    content: fs.readFileSync(abs, "utf-8"),
-                    name: filename,
-                    path: abs,
-                }
-            }
-        }
+  for (const filename of fs.readdirSync(rootDir)) {
+    if (filename.startsWith("_")) {
+      // ignore
+      continue;
     }
+    const abs = path.join(rootDir, filename);
+    if (fs.statSync(abs).isDirectory()) {
+      yield* iterateFiles(abs);
+    } else {
+      if (filename.endsWith(".md")) {
+        yield {
+          content: fs.readFileSync(abs, "utf-8"),
+          name: filename,
+          path: abs,
+        };
+      }
+    }
+  }
 }

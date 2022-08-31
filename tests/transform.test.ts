@@ -1,16 +1,16 @@
-import { createMarkdownProcessor } from "../src/markdown"
-import { resolveOptions } from "../src/options"
-import chai from "chai"
-import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot"
+import { createMarkdownProcessor } from "../src/markdown";
+import { resolveOptions } from "../src/options";
+import chai from "chai";
+import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
 
-chai.use(jestSnapshotPlugin())
+chai.use(jestSnapshotPlugin());
 
 describe("transform", () => {
-    const options = resolveOptions({})
-    const mdToSvelte = createMarkdownProcessor(options)
+  const options = resolveOptions({});
+  const mdToSvelte = createMarkdownProcessor(options);
 
-    it("basic", () => {
-        const md = `---
+  it("basic", () => {
+    const md = `---
 title: Hey
 ---
 
@@ -19,52 +19,52 @@ title: Hey
 - A
 - B
 - C
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    it("style", () => {
-        const md = `
+  it("style", () => {
+    const md = `
 # Hello
 
 <style>h1 { color: red }</style>
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    it("script", () => {
-        const md = `
+  it("script", () => {
+    const md = `
 # Hello
 
 <script lang="ts">
 import Foo from './Foo.vue'
 </script>
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    it("exposes frontmatter", () => {
-        const md = `---
+  it("exposes frontmatter", () => {
+    const md = `---
 title: Hey
 ---
 
-# Hello`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+# Hello`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    it("escapeCodeTagInterpolation", () => {
-        const md = `
+  it("escapeCodeTagInterpolation", () => {
+    const md = `
 <div>{hello}</div>
 
 \`\`\`svelte
 <div>{hello}</div>
 \`\`\`
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    it("frontmatter interpolation", () => {
-        const md = `
+  it("frontmatter interpolation", () => {
+    const md = `
 ---
 name: 'My Cool App'
 ---
@@ -72,12 +72,12 @@ name: 'My Cool App'
 # Hello World
 
 This is {frontmatter.name}
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
 
-    it("use component", () => {
-        const md = `---
+  it("use component", () => {
+    const md = `---
 title: Markdown to Svelte
 ---
 
@@ -91,38 +91,38 @@ title: Markdown to Svelte
     import MyComponent from './MyComponent.svelte'
 </script>
 <MyComponent>You can use Svelte components in Markdown</MyComponent>
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
-    it("escape curly braces in fence", () => {
-        const md = `
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
+  it("escape curly braces in fence", () => {
+    const md = `
 \`\`\`js
 function test() {
  return foo
 }
 \`\`\`
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
-    it("escape curly braces in code inline", () => {
-        const md = `
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
+  it("escape curly braces in code inline", () => {
+    const md = `
 \`{...}\`
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
-    it("escape curly braces in code block", () => {
-        const md = `
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
+  it("escape curly braces in code block", () => {
+    const md = `
     function test() {
         return foo
     }
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
-    it("escape curly braces in header", () => {
-        const md = `---
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
+  it("escape curly braces in header", () => {
+    const md = `---
 title: "\`{#if}\`"
 ---
-`
-        chai.expect(mdToSvelte("", md)).toMatchSnapshot()
-    })
-})
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
+});
