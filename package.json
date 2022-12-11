@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/ota-meshi/vite-plugin-svelte-md#readme",
   "peerDependencies": {
-    "vite": "^4.0.0"
+    "vite": "^2.0.0 || ^3.0.0 || ^4.0.0"
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.0.0",
