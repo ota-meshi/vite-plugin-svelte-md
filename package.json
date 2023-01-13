@@ -81,7 +81,7 @@
     "prettier-plugin-svelte": "^2.5.0",
     "prism-svelte": "^0.4.7",
     "prismjs": "^1.25.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.0.0",
     "svelte": "^3.44.2",
     "ts-node": "^10.4.0",
     "tsup": "^6.0.0",
