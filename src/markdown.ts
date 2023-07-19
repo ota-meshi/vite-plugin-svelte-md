@@ -67,7 +67,7 @@ function parseHtml(html: string) {
   });
   newHtml = newHtml.replace(SVELTE_TAGS_RE, (_, startTag, inner) => {
     const tagName = GET_SVELTE_TAG_NAME_RE.exec(
-      startTag.slice(1)
+      startTag.slice(1),
     )![0].toLowerCase();
     let svelteTag = svelteTags.find((tag) => tag.tagName === tagName);
     if (!svelteTag) {
@@ -85,7 +85,7 @@ export type MarkdownProcessor = (id: string, text: string) => string;
  * Creates md processor
  */
 export function createMarkdownProcessor(
-  options: ResolvedOptions
+  options: ResolvedOptions,
 ): MarkdownProcessor {
   const markdownIt = new MarkdownIt({
     html: true,
@@ -127,14 +127,14 @@ export function createMarkdownProcessor(
 
     const { head, frontmatter } = frontmatterPreprocess(
       parsedFrontmatter?.data ?? {},
-      options
+      options,
     );
     parsedHtml.moduleContext.prepend(
-      `export const frontmatter = ${JSON.stringify(frontmatter)}`
+      `export const frontmatter = ${JSON.stringify(frontmatter)}`,
     );
     if (headEnabled && head) {
       let svelteHead = parsedHtml.svelteTags.find(
-        (tag) => tag.tagName === "svelte:head"
+        (tag) => tag.tagName === "svelte:head",
       );
       if (!svelteHead) {
         svelteHead = new TagContent("svelte:head");

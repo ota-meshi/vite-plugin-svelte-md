@@ -19,7 +19,7 @@ export type HeadObject = Record<string, any>;
  */
 export function preprocessHead(
   frontmatter: any,
-  options: ResolvedOptions
+  options: ResolvedOptions,
 ): HeadObject | null {
   if (!options.headEnabled) return frontmatter;
 
