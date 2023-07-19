@@ -14,7 +14,7 @@ export default function (options: Options = {}): Plugin {
 
   const filter = createFilter(
     resolvedOptions.include || /\.md$/,
-    resolvedOptions.exclude
+    resolvedOptions.exclude,
   );
 
   return {

@@ -6,14 +6,14 @@ export default (md: MarkdownIt): void => {
     const rawCode = fence(...args);
     const code = rawCode.slice(
       rawCode.indexOf("<code>"),
-      rawCode.indexOf("</code>")
+      rawCode.indexOf("</code>"),
     );
 
     const lines = code.split("\n");
     const lineNumbersCode = lines
       .slice(0, -1)
       .map(
-        (_line, index) => `<span class="line-number">${index + 1}</span><br>`
+        (_line, index) => `<span class="line-number">${index + 1}</span><br>`,
       )
       .join("");
 
