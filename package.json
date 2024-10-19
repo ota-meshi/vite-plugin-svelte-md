@@ -82,7 +82,7 @@
     "prism-svelte": "^0.4.7",
     "prismjs": "^1.25.0",
     "rimraf": "^6.0.0",
-    "svelte": "^4.0.0",
+    "svelte": "^5.0.0",
     "ts-node": "^10.4.0",
     "tsup": "^8.0.0",
     "typescript": "~5.0.0",
