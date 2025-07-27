@@ -4,9 +4,7 @@ exports[`transform with highlight highlight 1`] = `
 "<script context=\\"module\\">
 export const frontmatter = {\\"title\\":\\"Hey\\"}
 </script>
-<script>
 
-</script>
 <svelte:head>
 <title>Hey</title>
 <meta property=\\"og:title\\" content=\\"Hey\\">
@@ -28,9 +26,7 @@ exports[`transform with highlight highlight svelte 1`] = `
 "<script context=\\"module\\">
 export const frontmatter = {\\"title\\":\\"Hello Svelte\\"}
 </script>
-<script>
 
-</script>
 <svelte:head>
 <title>Hello Svelte</title>
 <meta property=\\"og:title\\" content=\\"Hello Svelte\\">
@@ -63,9 +59,7 @@ exports[`transform with highlight highlight svelte with line numbers 1`] = `
 "<script context=\\"module\\">
 export const frontmatter = {\\"title\\":\\"Hello Svelte\\"}
 </script>
-<script>
 
-</script>
 <svelte:head>
 <title>Hello Svelte</title>
 <meta property=\\"og:title\\" content=\\"Hello Svelte\\">
@@ -101,9 +95,7 @@ exports[`transform with highlight highlight with fixtures no-dupe-else-if-blocks
 "<script context=\\"module\\">
 export const frontmatter = {\\"pageClass\\":\\"rule-details\\",\\"sidebarDepth\\":0,\\"title\\":\\"@ota-meshi/svelte/no-dupe-else-if-blocks\\",\\"description\\":\\"disallow duplicate conditions in \`{#if}\` / \`{:else if}\` chains\\",\\"since\\":\\"v0.0.1\\"}
 </script>
-<script>
 
-</script>
 <svelte:head>
 <title>@ota-meshi/svelte/no-dupe-else-if-blocks</title>
 <meta property=\\"og:title\\" content=\\"@ota-meshi/svelte/no-dupe-else-if-blocks\\">
