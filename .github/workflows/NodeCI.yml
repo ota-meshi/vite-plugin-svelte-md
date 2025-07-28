@@ -31,6 +31,21 @@ jobs:
       run: npm install --legacy-peer-deps
     - name: Test
       run: npm test
+  test-with-vite-versions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        vite: [2, 3, 5, 6, 7]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Vite ${{ matrix.vite }}
+      uses: actions/setup-node@v3
+    - name: Install Packages
+      run: npm install --legacy-peer-deps
+    - name: Install Vite
+      run: npm install -D vite@${{ matrix.vite }} --legacy-peer-deps
+    - name: Test
+      run: npm test
   test-for-vite-v2:
     runs-on: ubuntu-latest
     strategy:
