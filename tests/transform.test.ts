@@ -63,6 +63,17 @@ title: Hey
     chai.expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
+  it("scriptInsideSvelte", () => {
+    const md = `
+<svelte:head><script async src="foo.js"></script></svelte:head>
+
+\`\`\`svelte
+<svelte:head><script async src="foo.js"></script></svelte:head>
+\`\`\`
+`;
+    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+  });
+
   it("frontmatter interpolation", () => {
     const md = `
 ---

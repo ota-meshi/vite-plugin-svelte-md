@@ -28,6 +28,9 @@ class TagContent {
   }
 
   public toTag() {
+    if (this.contents.length === 0) {
+      return "";
+    }
     return `${
       this.startTag ||
       `<${this.tagName}${this.defaultAttrs ? ` ${this.defaultAttrs}` : ""}>`
@@ -57,15 +60,7 @@ function parseHtml(html: string) {
   const moduleContext = new TagContent("script", 'context="module"');
   const instanceScript = new TagContent("script");
   const svelteTags: TagContent[] = [];
-  let newHtml = html.replace(SCRIPTS_RE, (_, startTag, script: string) => {
-    let scriptContent = instanceScript;
-    if (IS_MODULE_CONTEXT_RE.test(startTag)) {
-      scriptContent = moduleContext;
-    }
-    scriptContent.addTag(startTag, script);
-    return "";
-  });
-  newHtml = newHtml.replace(SVELTE_TAGS_RE, (_, startTag, inner) => {
+  let newHtml = html.replace(SVELTE_TAGS_RE, (_, startTag, inner) => {
     const tagName = GET_SVELTE_TAG_NAME_RE.exec(
       startTag.slice(1),
     )![0].toLowerCase();
@@ -77,6 +72,15 @@ function parseHtml(html: string) {
     svelteTag.addTag(startTag, inner);
     return "";
   });
+  newHtml = newHtml.replace(SCRIPTS_RE, (_, startTag, script: string) => {
+    let scriptContent = instanceScript;
+    if (IS_MODULE_CONTEXT_RE.test(startTag)) {
+      scriptContent = moduleContext;
+    }
+    scriptContent.addTag(startTag, script);
+    return "";
+  });
+  
   return { html: newHtml, moduleContext, instanceScript, svelteTags };
 }
 
