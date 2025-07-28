@@ -80,7 +80,7 @@ function parseHtml(html: string) {
     scriptContent.addTag(startTag, script);
     return "";
   });
-  
+
   return { html: newHtml, moduleContext, instanceScript, svelteTags };
 }
 

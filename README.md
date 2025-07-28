@@ -114,7 +114,7 @@ Add it to `vite.config.js`
 ```ts
 // vite.config.js
 import { defineConfig } from "vite";
-import { sveltekit } from "@sveltejs/kit/vite"
+import { sveltekit } from "@sveltejs/kit/vite";
 import svelteMd from "vite-plugin-svelte-md";
 
 export default defineConfig({
