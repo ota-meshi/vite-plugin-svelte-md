@@ -25,7 +25,10 @@
     "cover": "nyc --reporter=lcov npm run test",
     "debug": "mocha --require ts-node/register/transpile-only \"tests/**/*.ts\" --reporter dot",
     "update-snap": "mocha --require ts-node/register/transpile-only \"tests/**/*.ts\" --reporter dot --update",
-    "preversion": "npm run lint && npm test"
+    "preversion": "npm run lint && npm test",
+    "generate:version": "npm run lint -- --fix",
+    "changeset:version": "changeset version && npm run generate:version && git add --all",
+    "changeset:publish": "npm run build && changeset publish"
   },
   "repository": {
     "type": "git",
@@ -54,7 +57,9 @@
     "markdown-it": "^13.0.0"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.5",
     "@ota-meshi/eslint-plugin": "^0.15.0",
+    "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@types/chai": "^4.2.22",
     "@types/escape-html": "^1.0.1",
     "@types/markdown-it": "^13.0.0",
