@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// test-snapshot v1
 
 exports[`transform with highlight highlight 1`] = `
 "<script context=\\"module\\">

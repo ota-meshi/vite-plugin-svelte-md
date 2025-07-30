@@ -3,12 +3,9 @@ import fs from "fs";
 import path from "path";
 import { createMarkdownProcessor } from "../src/markdown";
 import { resolveOptions } from "../src/options";
-import chai from "chai";
-import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
+import { expect } from "@ota-meshi/test-snapshot";
 import highlight from "./highlight-tools/highlight";
 import lineNumbersPlugin from "./highlight-tools/line-numbers-plugin";
-
-chai.use(jestSnapshotPlugin());
 
 describe("transform with highlight", () => {
   const options = resolveOptions({
@@ -34,7 +31,7 @@ function test() {
 }
 \`\`\`
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
   it("highlight svelte", () => {
     const md = `---
@@ -65,7 +62,7 @@ title: Hello Svelte
 </ul>
 \`\`\`
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("highlight svelte with line numbers", () => {
@@ -103,7 +100,7 @@ title: Hello Svelte
 </ul>
 \`\`\`
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   describe("highlight with fixtures", () => {
@@ -119,7 +116,7 @@ title: Hello Svelte
         if (process.argv.includes("--update")) {
           fs.writeFileSync(`${fixture.path}.svelte`, sfc, "utf-8");
         }
-        chai.expect(sfc).toMatchSnapshot();
+        expect(sfc).toMatchSnapshot();
       });
     }
   });
