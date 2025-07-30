@@ -1,9 +1,6 @@
 import { createMarkdownProcessor } from "../src/markdown";
 import { resolveOptions } from "../src/options";
-import chai from "chai";
-import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
-
-chai.use(jestSnapshotPlugin());
+import { expect } from "@ota-meshi/test-snapshot";
 
 describe("transform with head", () => {
   const options = resolveOptions({ headEnabled: true });
@@ -20,7 +17,7 @@ title: Hey
 - B
 - C
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("head tag", () => {
@@ -44,6 +41,6 @@ title: Hey
 
 <MyComponent />
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 });

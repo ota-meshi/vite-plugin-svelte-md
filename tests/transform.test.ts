@@ -1,9 +1,6 @@
 import { createMarkdownProcessor } from "../src/markdown";
 import { resolveOptions } from "../src/options";
-import chai from "chai";
-import { jestSnapshotPlugin } from "mocha-chai-jest-snapshot";
-
-chai.use(jestSnapshotPlugin());
+import { expect } from "@ota-meshi/test-snapshot";
 
 describe("transform", () => {
   const options = resolveOptions({});
@@ -20,7 +17,7 @@ title: Hey
 - B
 - C
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("style", () => {
@@ -29,7 +26,7 @@ title: Hey
 
 <style>h1 { color: red }</style>
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("script", () => {
@@ -40,7 +37,7 @@ title: Hey
 import Foo from './Foo.vue'
 </script>
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("exposes frontmatter", () => {
@@ -49,7 +46,7 @@ title: Hey
 ---
 
 # Hello`;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("escapeCodeTagInterpolation", () => {
@@ -60,7 +57,7 @@ title: Hey
 <div>{hello}</div>
 \`\`\`
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("scriptInsideSvelte", () => {
@@ -71,7 +68,7 @@ title: Hey
 <svelte:head><script async src="foo.js"></script></svelte:head>
 \`\`\`
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("frontmatter interpolation", () => {
@@ -84,7 +81,7 @@ name: 'My Cool App'
 
 This is {frontmatter.name}
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 
   it("use component", () => {
@@ -103,7 +100,7 @@ title: Markdown to Svelte
 </script>
 <MyComponent>You can use Svelte components in Markdown</MyComponent>
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
   it("escape curly braces in fence", () => {
     const md = `
@@ -113,13 +110,13 @@ function test() {
 }
 \`\`\`
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
   it("escape curly braces in code inline", () => {
     const md = `
 \`{...}\`
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
   it("escape curly braces in code block", () => {
     const md = `
@@ -127,13 +124,13 @@ function test() {
         return foo
     }
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
   it("escape curly braces in header", () => {
     const md = `---
 title: "\`{#if}\`"
 ---
 `;
-    chai.expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(mdToSvelte("", md)).toMatchSnapshot();
   });
 });
