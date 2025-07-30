@@ -31,7 +31,7 @@ jobs:
       run: npm install --legacy-peer-deps
     - name: Test
       run: npm test
-  test-with-vite-versions:
+  test-for-other-vite-versions:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -44,23 +44,6 @@ jobs:
       run: npm install --legacy-peer-deps
     - name: Install Vite
       run: npm install -D vite@${{ matrix.vite }} --legacy-peer-deps
-    - name: Test
-      run: npm test
-  test-for-vite-v2:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }} with Vite v2
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install Packages
-      run: npm install -D vite@2 --legacy-peer-deps
-    - name: Install Packages
-      run: npm install --legacy-peer-deps
     - name: Test
       run: npm test
   test-and-coverage:
