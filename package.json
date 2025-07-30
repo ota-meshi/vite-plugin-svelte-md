@@ -62,7 +62,6 @@
     "@ota-meshi/eslint-plugin": "^0.17.6",
     "@ota-meshi/test-snapshot": "^1.1.1",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
-    "@types/chai": "^4.2.22",
     "@types/escape-html": "^1.0.1",
     "@types/markdown-it": "^13.0.0",
     "@types/mocha": "^10.0.0",
