@@ -1,7 +1,7 @@
 import MarkdownIt from "markdown-it";
 import grayMatter from "gray-matter";
 import markdownItSvelteTags from "./markdown-it-svelte-tags";
-import svelteCurlyBracesEscape from "./markdown-it-svelte-curly-braces-escape";
+import markdownItSvelteCurlyBracesEscape from "./markdown-it-svelte-curly-braces-escape";
 import { toArray } from "./utils";
 import { headObjToTags, preprocessHead } from "./head";
 import type { ResolvedOptions } from "./options";
@@ -106,7 +106,7 @@ export function createMarkdownProcessor(
     }
     return !IS_SVELTE_TAG_NAME_RE.test(url);
   };
-  markdownIt.use(markdownItSvelteTags).use(svelteCurlyBracesEscape);
+  markdownIt.use(markdownItSvelteTags).use(markdownItSvelteCurlyBracesEscape);
 
   options.markdownItUses.forEach((e) => {
     const [plugin, ...opts] = toArray(e);
