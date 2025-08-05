@@ -59,7 +59,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0",
-    "@ota-meshi/eslint-plugin": "^0.17.6",
+    "@ota-meshi/eslint-plugin": "^0.18.0",
     "@ota-meshi/test-snapshot": "^1.1.1",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@types/escape-html": "^1.0.1",
