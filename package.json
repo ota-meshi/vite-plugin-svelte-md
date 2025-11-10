@@ -54,7 +54,7 @@
   "dependencies": {
     "@rollup/pluginutils": "^5.0.0",
     "gray-matter": "^4.0.3",
-    "markdown-it": "^13.0.0"
+    "markdown-it": "^14.0.0"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
@@ -63,7 +63,7 @@
     "@ota-meshi/test-snapshot": "^1.1.1",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@types/escape-html": "^1.0.1",
-    "@types/markdown-it": "^13.0.0",
+    "@types/markdown-it": "^14.0.0",
     "@types/mocha": "^10.0.0",
     "@types/node": "^24.0.0",
     "@types/prismjs": "^1.16.6",
