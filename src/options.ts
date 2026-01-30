@@ -1,4 +1,4 @@
-import type MarkdownIt from "markdown-it";
+import type * as MarkdownIt from "markdown-it";
 import { toArray } from "./utils";
 
 export interface Options {
