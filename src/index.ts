@@ -1,8 +1,9 @@
-import type { Plugin } from "vite";
-import { createFilter } from "@rollup/pluginutils";
+import { createFilter, type Plugin, version } from "vite";
 import { createMarkdownProcessor } from "./markdown";
 import type { Options } from "./options";
 import { resolveOptions } from "./options";
+
+const preVite6 = Number(version.split(".")[0]) < 6;
 
 export type { Options };
 /**
@@ -20,14 +21,23 @@ export default function (options: Options = {}): Plugin {
   return {
     name: "vite-plugin-svelte-md",
     enforce: "pre",
-    transform(raw, id) {
-      if (!filter(id)) return undefined;
-      try {
-        return mdToSvelte(id, raw);
-      } catch (e: any) {
-        this.error(e);
-      }
-      return undefined;
+    transform: {
+      order: "pre",
+      filter: {
+        id: {
+          include: resolvedOptions.include || /\.md$/,
+          exclude: resolvedOptions.exclude,
+        },
+      },
+      handler(raw, id) {
+        // "filter" is a Vite 6+ feature, filter here for older versions
+        if (preVite6 && !filter(id)) return null;
+        try {
+          return mdToSvelte(id, raw);
+        } catch (e: any) {
+          return this.error(e);
+        }
+      },
     },
     handleHotUpdate(ctx) {
       if (!filter(ctx.file)) return;

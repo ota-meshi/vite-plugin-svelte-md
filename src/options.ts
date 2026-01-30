@@ -1,5 +1,4 @@
 import type MarkdownIt from "markdown-it";
-import type { FilterPattern } from "@rollup/pluginutils";
 import { toArray } from "./utils";
 
 export interface Options {
@@ -31,13 +30,12 @@ export interface Options {
    */
   wrapperClasses?: string | string[];
 
-  include?: FilterPattern;
-  exclude?: FilterPattern;
+  include?: (string | RegExp)[] | string | RegExp | undefined;
+  exclude?: (string | RegExp)[] | string | RegExp | undefined;
 }
 
-export interface ResolvedOptions extends Required<Options> {
-  wrapperClasses: string;
-}
+export type ResolvedOptions = Required<Omit<Options, "include" | "exclude">> &
+  Pick<Options, "include" | "exclude"> & { wrapperClasses: string };
 
 /**
  * Resolve options
@@ -47,8 +45,8 @@ export function resolveOptions(userOptions: Options): ResolvedOptions {
     headEnabled: true,
     markdownItOptions: {},
     markdownItUses: [],
-    include: null,
-    exclude: null,
+    include: undefined,
+    exclude: undefined,
     ...userOptions,
     wrapperClasses: toArray(userOptions.wrapperClasses ?? "markdown-body")
       .filter((i) => i)
