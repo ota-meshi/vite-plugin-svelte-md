@@ -3,9 +3,14 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - main
 
 permissions: {}
+
+# Allow one concurrent deployment
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   release:
@@ -13,14 +18,20 @@ jobs:
     if: github.repository == 'ota-meshi/vite-plugin-svelte-md'
     permissions:
       contents: write # to create release (changesets/action)
+      id-token: write # OpenID Connect token needed for provenance
       pull-requests: write # to create pull request (changesets/action)
     name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
       - name: Install Dependencies
         run: npm install
 
@@ -32,4 +43,3 @@ jobs:
           publish: npm run changeset:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
