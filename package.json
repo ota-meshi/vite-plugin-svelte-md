@@ -20,7 +20,7 @@
     "eslint-fix": "npm run lint -- --fix",
     "format:docs": "prettier README.md --write",
     "test": "vitest",
-    "cover": "vitest --coverage",
+    "cover": "vitest --coverage --coverage.include 'src/**'",
     "update-snap": "vitest --update",
     "preversion": "npm run lint && npm test",
     "generate:version": "npm run lint -- --fix",
