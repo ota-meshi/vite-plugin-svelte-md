@@ -1,5 +1,5 @@
 import type MarkdownIt from "markdown-it";
-import { escapeBraces } from "../utils";
+import { escapeBraces } from "../utils.ts";
 
 /**
  * Escape curly braces in code block plugin

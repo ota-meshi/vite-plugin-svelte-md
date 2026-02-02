@@ -1,15 +1,15 @@
-// test-snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`transform basic 1`] = `
-"<script context=\\"module\\">
-export const frontmatter = {\\"title\\":\\"Hey\\"}
+exports[`transform > basic 1`] = `
+"<script context="module">
+export const frontmatter = {"title":"Hey"}
 </script>
 
 <svelte:head>
 <title>Hey</title>
-<meta property=\\"og:title\\" content=\\"Hey\\">
+<meta property="og:title" content="Hey">
 </svelte:head>
-<div class=\\"markdown-body\\"><h1>Hello</h1>
+<div class="markdown-body"><h1>Hello</h1>
 <ul>
 <li>A</li>
 <li>B</li>
@@ -18,133 +18,133 @@ export const frontmatter = {\\"title\\":\\"Hey\\"}
 </div>"
 `;
 
-exports[`transform escape curly braces in code block 1`] = `
-"<script context=\\"module\\">
+exports[`transform > escape curly braces in code block 1`] = `
+"<script context="module">
 export const frontmatter = {}
 </script>
 
 
-<div class=\\"markdown-body\\"><pre><code>function test() &#123;
+<div class="markdown-body"><pre><code>function test() &#123;
     return foo
 &#125;
 </code></pre>
 </div>"
 `;
 
-exports[`transform escape curly braces in code inline 1`] = `
-"<script context=\\"module\\">
+exports[`transform > escape curly braces in code inline 1`] = `
+"<script context="module">
 export const frontmatter = {}
 </script>
 
 
-<div class=\\"markdown-body\\"><p><code>&#123;...&#125;</code></p>
+<div class="markdown-body"><p><code>&#123;...&#125;</code></p>
 </div>"
 `;
 
-exports[`transform escape curly braces in fence 1`] = `
-"<script context=\\"module\\">
+exports[`transform > escape curly braces in fence 1`] = `
+"<script context="module">
 export const frontmatter = {}
 </script>
 
 
-<div class=\\"markdown-body\\"><pre><code class=\\"language-js\\">function test() &#123;
+<div class="markdown-body"><pre><code class="language-js">function test() &#123;
  return foo
 &#125;
 </code></pre>
 </div>"
 `;
 
-exports[`transform escape curly braces in header 1`] = `
-"<script context=\\"module\\">
-export const frontmatter = {\\"title\\":\\"\`{#if}\`\\"}
+exports[`transform > escape curly braces in header 1`] = `
+"<script context="module">
+export const frontmatter = {"title":"\`{#if}\`"}
 </script>
 
 <svelte:head>
 <title>\`&#123;#if&#125;\`</title>
-<meta property=\\"og:title\\" content=\\"\`&#123;#if&#125;\`\\">
+<meta property="og:title" content="\`&#123;#if&#125;\`">
 </svelte:head>
-<div class=\\"markdown-body\\"></div>"
+<div class="markdown-body"></div>"
 `;
 
-exports[`transform escapeCodeTagInterpolation 1`] = `
-"<script context=\\"module\\">
+exports[`transform > escapeCodeTagInterpolation 1`] = `
+"<script context="module">
 export const frontmatter = {}
 </script>
 
 
-<div class=\\"markdown-body\\"><div>{hello}</div>
-<pre><code class=\\"language-svelte\\">&lt;div&gt;&#123;hello&#125;&lt;/div&gt;
+<div class="markdown-body"><div>{hello}</div>
+<pre><code class="language-svelte">&lt;div&gt;&#123;hello&#125;&lt;/div&gt;
 </code></pre>
 </div>"
 `;
 
-exports[`transform exposes frontmatter 1`] = `
-"<script context=\\"module\\">
-export const frontmatter = {\\"title\\":\\"Hey\\"}
+exports[`transform > exposes frontmatter 1`] = `
+"<script context="module">
+export const frontmatter = {"title":"Hey"}
 </script>
 
 <svelte:head>
 <title>Hey</title>
-<meta property=\\"og:title\\" content=\\"Hey\\">
+<meta property="og:title" content="Hey">
 </svelte:head>
-<div class=\\"markdown-body\\"><h1>Hello</h1>
+<div class="markdown-body"><h1>Hello</h1>
 </div>"
 `;
 
-exports[`transform frontmatter interpolation 1`] = `
-"<script context=\\"module\\">
+exports[`transform > frontmatter interpolation 1`] = `
+"<script context="module">
 export const frontmatter = {}
 </script>
 
 
-<div class=\\"markdown-body\\"><hr>
+<div class="markdown-body"><hr>
 <h2>name: ‘My Cool App’</h2>
 <h1>Hello World</h1>
 <p>This is {frontmatter.name}</p>
 </div>"
 `;
 
-exports[`transform script 1`] = `
-"<script context=\\"module\\">
+exports[`transform > script 1`] = `
+"<script context="module">
 export const frontmatter = {}
 </script>
-<script lang=\\"ts\\">
+<script lang="ts">
 
 import Foo from './Foo.vue'
 
 </script>
 
-<div class=\\"markdown-body\\"><h1>Hello</h1>
+<div class="markdown-body"><h1>Hello</h1>
 </div>"
 `;
 
-exports[`transform scriptInsideSvelte 1`] = `
-"<script context=\\"module\\">
+exports[`transform > scriptInsideSvelte 1`] = `
+"<script context="module">
 export const frontmatter = {}
 </script>
 
 <svelte:head>
-<script async src=\\"foo.js\\"></script>
+<script async src="foo.js"></script>
 </svelte:head>
-<div class=\\"markdown-body\\"><p></p>
-<pre><code class=\\"language-svelte\\">&lt;svelte:head&gt;&lt;script async src=&quot;foo.js&quot;&gt;&lt;/script&gt;&lt;/svelte:head&gt;
+<div class="markdown-body"><p></p>
+<pre><code class="language-svelte">&lt;svelte:head&gt;&lt;script async src=&quot;foo.js&quot;&gt;&lt;/script&gt;&lt;/svelte:head&gt;
 </code></pre>
 </div>"
 `;
 
-exports[`transform style 1`] = `
-"<script context=\\"module\\">
+exports[`transform > style 1`] = `
+"<script context="module">
 export const frontmatter = {}
 </script>
 
 
-<div class=\\"markdown-body\\"><h1>Hello</h1>
+<div class="markdown-body"><h1>Hello</h1>
 <style>h1 { color: red }</style></div>"
 `;
 
-exports[`transform use component 1`] = `
-"<script context=\\"module\\">
-export const frontmatter = {\\"title\\":\\"Markdown to Svelte\\"}
+exports[`transform > use component 1`] = `
+"<script context="module">
+export const frontmatter = {"title":"Markdown to Svelte"}
 </script>
 <script>
 
@@ -153,9 +153,9 @@ export const frontmatter = {\\"title\\":\\"Markdown to Svelte\\"}
 </script>
 <svelte:head>
 <title>Markdown to Svelte</title>
-<meta property=\\"og:title\\" content=\\"Markdown to Svelte\\">
+<meta property="og:title" content="Markdown to Svelte">
 </svelte:head>
-<div class=\\"markdown-body\\"><h1>Convert Markdown to Svelte Component</h1>
+<div class="markdown-body"><h1>Convert Markdown to Svelte Component</h1>
 <ul>
 <li>List</li>
 <li>List</li>
