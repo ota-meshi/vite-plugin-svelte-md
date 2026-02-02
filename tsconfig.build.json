@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    // Environment (run in Node)
+    // Environment (build for Node)
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
 
