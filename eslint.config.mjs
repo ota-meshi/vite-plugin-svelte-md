@@ -84,5 +84,6 @@ export default defineConfig([
     "lib",
     "node_modules",
     "tests/fixtures/**/*.json",
+    "tests/e2e/**/dist/",
   ]),
 ]);
