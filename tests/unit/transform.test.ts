@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { createMarkdownProcessor } from "../src/markdown";
-import { resolveOptions } from "../src/options";
+import { createMarkdownProcessor } from "../../src/markdown";
+import { resolveOptions } from "../../src/options";
 
 describe("transform", () => {
   const options = resolveOptions({});
