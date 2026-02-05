@@ -1,0 +1,11 @@
+{
+  "name": "test-vite6",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^5",
+    "svelte": "^5",
+    "vite": "^6",
+    "vite-plugin-svelte-md": "*"
+  }
+}

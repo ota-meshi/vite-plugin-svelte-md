@@ -74,6 +74,7 @@ export default defineConfig([
     rules: {
       "jsdoc/require-jsdoc": "off",
       "no-console": "off",
+      "no-process-env": "off",
       "@typescript-eslint/no-shadow": "off",
     },
   },

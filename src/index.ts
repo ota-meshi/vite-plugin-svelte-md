@@ -8,7 +8,7 @@ export type { Options };
 /**
  * Creates vite-plugin-svelte-md
  */
-export default function (options: Options = {}): Plugin {
+export default function svelteMd(options: Options = {}): Plugin {
   const resolvedOptions = resolveOptions(options);
   const mdToSvelte = createMarkdownProcessor(resolvedOptions);
 

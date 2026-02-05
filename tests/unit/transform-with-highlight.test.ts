@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
-import { createMarkdownProcessor } from "../src/markdown";
-import { resolveOptions } from "../src/options";
+import { createMarkdownProcessor } from "../../src/markdown";
+import { resolveOptions } from "../../src/options";
 import highlight from "./highlight-tools/highlight";
 import lineNumbersPlugin from "./highlight-tools/line-numbers-plugin";
 
