@@ -1,9 +1,8 @@
-/* global process -- global */
+import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
 import { createMarkdownProcessor } from "../src/markdown";
 import { resolveOptions } from "../src/options";
-import { expect } from "@ota-meshi/test-snapshot";
 import highlight from "./highlight-tools/highlight";
 import lineNumbersPlugin from "./highlight-tools/line-numbers-plugin";
 

@@ -1,10 +1,10 @@
 import MarkdownIt from "markdown-it";
 import grayMatter from "gray-matter";
-import markdownItSvelteTags from "./markdown-it-svelte-tags";
-import markdownItSvelteCurlyBracesEscape from "./markdown-it-svelte-curly-braces-escape";
-import { toArray } from "./utils";
-import { headObjToTags, preprocessHead } from "./head";
-import type { ResolvedOptions } from "./options";
+import markdownItSvelteTags from "./markdown-it-svelte-tags/index.ts";
+import markdownItSvelteCurlyBracesEscape from "./markdown-it-svelte-curly-braces-escape/index.ts";
+import { toArray } from "./utils.ts";
+import { headObjToTags, preprocessHead } from "./head.ts";
+import type { ResolvedOptions } from "./options.ts";
 
 const SCRIPTS_RE = /(<script[^>]*>)([\s\S]*?)<\/script>/gu;
 const SVELTE_TAGS_RE = /(<svelte:[a-z][^>]*>)([\s\S]*?)<\/svelte:[a-z]+>/gu;

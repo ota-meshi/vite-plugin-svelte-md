@@ -1,5 +1,5 @@
-import type { ResolvedOptions } from "./options";
-import { escapeBraces } from "./utils";
+import type { ResolvedOptions } from "./options.ts";
+import { escapeBraces } from "./utils.ts";
 
 export const headProperties = [
   "title",

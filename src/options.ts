@@ -1,5 +1,5 @@
 import type * as MarkdownIt from "markdown-it";
-import { toArray } from "./utils";
+import { toArray } from "./utils.ts";
 
 export interface Options {
   /**

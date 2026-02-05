@@ -1,17 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    // Environment (for src and tests)
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "Bundler",
+
+    // Code Quality
     "strict": true,
-    "lib": ["es2020", "DOM"],
-    "module": "commonjs",
-    "declaration": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
+    "noImplicitReturns": true,
     "noUnusedParameters": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node"
+    "verbatimModuleSyntax": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Build
+    "declaration": true,
+    "rewriteRelativeImportExtensions": true
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "tools/**/*.ts", "tsup.config.ts"]
+  "include": ["src/**/*.ts", "tests/**/*.ts", "tools/**/*.ts"]
 }

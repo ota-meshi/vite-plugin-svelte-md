@@ -1,7 +1,6 @@
 import { createFilter, type Plugin, version } from "vite";
-import { createMarkdownProcessor } from "./markdown";
-import type { Options } from "./options";
-import { resolveOptions } from "./options";
+import { createMarkdownProcessor } from "./markdown.ts";
+import { resolveOptions, type Options } from "./options.ts";
 
 const preVite6 = Number(version.split(".")[0]) < 6;
 

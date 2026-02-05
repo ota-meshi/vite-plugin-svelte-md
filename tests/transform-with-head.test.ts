@@ -1,6 +1,6 @@
+import { describe, expect, it } from "vitest";
 import { createMarkdownProcessor } from "../src/markdown";
 import { resolveOptions } from "../src/options";
-import { expect } from "@ota-meshi/test-snapshot";
 
 describe("transform with head", () => {
   const options = resolveOptions({ headEnabled: true });
