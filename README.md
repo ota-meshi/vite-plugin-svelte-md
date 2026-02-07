@@ -193,7 +193,7 @@ The class name of the div that wraps the content.
     <th colspan="3">Architecture</th>
   </tr>
   <tr>
-    <td>Markdown Parser</td>
+    <td>Markdown parser</td>
     <td><a href="https://npmx.dev/package/markdown-it">markdown-it</a> (supports plugins)</td>
     <td><a href="https://npmx.dev/package/remark">remark</a> + <a href="https://npmx.dev/package/rehype">rehype</a>  (supports plugins)</td>
   </tr>
