@@ -219,7 +219,7 @@ The class name of the div that wraps the content.
     <td>❌ (manual)</td>
   </tr>
   <tr>
-    <td>Syntax Highlighting</td>
+    <td>Syntax highlighting</td>
     <td>⚙️ (bring your own in <a href="https://github.com/markdown-it/markdown-it#syntax-highlighting"><code>markdownItOptions.highlight</code></a>)</td>
     <td>✅ (defaults to <a href="https://github.com/PrismJS/prism/">Prism</a>, <a href="https://mdsvex.pngwn.io/docs#highlight">can be changed</a>)</td>
   </tr>
