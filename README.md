@@ -16,7 +16,7 @@ _`vite-plugin-svelte-md` is heavily inspired by [vite-plugin-md](https://github.
 
 ## 📛 Features
 
-This plugin converts markdown files to Svelte component templates.  
+This plugin converts markdown files to Svelte component templates.
 Combined with [the Svelte plugin](https://github.com/sveltejs/vite-plugin-svelte), you can convert markdown files to Svelte components.
 
 For example, Input:
@@ -199,7 +199,7 @@ The class name of the div that wraps the content.
   </tr>
   <tr>
     <td>Transformation step</td>
-    <td>Vite plugin</td>
+    <td>Vite plugin (compatible with other Vite plugins, e.g. <a href="https://svelte.dev/docs/kit/images#sveltejs-enhanced-img"><code>@sveltejs/enhanced-img</code></a>)</td>
     <td>Svelte preprocessor</td>
   </tr>
   <tr>
