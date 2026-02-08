@@ -167,7 +167,7 @@ The class name of the div that wraps the content.
 
 ## 🎏 Comparison
 
-`vite-plugin-svelte-md` is not the only library that converts markdown to Svelte components:
+`vite-plugin-svelte-md` is not the only library that converts Markdown to Svelte components:
 
 <table>
   <tr>
