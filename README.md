@@ -16,7 +16,7 @@ _`vite-plugin-svelte-md` is heavily inspired by [vite-plugin-md](https://github.
 
 ## 📛 Features
 
-This plugin converts markdown files to Svelte component templates.  
+This plugin converts markdown files to Svelte component templates.<br>
 Combined with [the Svelte plugin](https://github.com/sveltejs/vite-plugin-svelte), you can convert markdown files to Svelte components.
 
 For example, Input:
@@ -164,6 +164,86 @@ svelteMd({
 #### `wrapperClasses`
 
 The class name of the div that wraps the content.
+
+## 🎏 Comparison
+
+`vite-plugin-svelte-md` is not the only library that converts Markdown to Svelte components:
+
+<table>
+  <tr>
+    <th></th>
+    <th>
+      <a href="https://github.com/ota-meshi/vite-plugin-svelte-md">ota-meshi/vite-plugin-svelte-md</a>
+    </th>
+    <th>
+      <a href="https://github.com/pngwn/MDsveX">pngwn/MDsveX</a>
+    </th>
+  </tr>
+  <tr>
+    <td>Popularity</td>
+    <td><a href="https://npmx.dev/package/vite-plugin-svelte-md"><img alt="NPM Downloads" src="https://img.shields.io/npm/dw/vite-plugin-svelte-md?style=flat-square&color=d73d36"></a> <a href="https://github.com/ota-meshi/vite-plugin-svelte-md"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/ota-meshi/vite-plugin-svelte-md?style=flat-square&color=eac54f"></a></td>
+    <td><a href="https://npmx.dev/package/mdsvex"><img alt="NPM Downloads" src="https://img.shields.io/npm/dw/mdsvex?style=flat-square&color=d73d36"></a> <a href="https://github.com/pngwn/MDsveX"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/pngwn/MDsveX?style=flat-square&color=eac54f"></a></td>
+  </tr>
+  <tr>
+    <td>License</td>
+    <td><a href="https://github.com/ota-meshi/vite-plugin-svelte-md/blob/main/LICENSE">MIT</a></td>
+    <td><a href="https://github.com/pngwn/MDsveX/blob/main/LICENSE">MIT</a></td>
+  </tr>
+  <tr>
+    <th colspan="3">Architecture</th>
+  </tr>
+  <tr>
+    <td>Markdown parser</td>
+    <td><a href="https://npmx.dev/package/markdown-it">markdown-it</a> (supports plugins)</td>
+    <td><a href="https://npmx.dev/package/remark">remark</a> + <a href="https://npmx.dev/package/rehype">rehype</a>  (supports plugins)</td>
+  </tr>
+  <tr>
+    <td>Transformation step</td>
+    <td>Vite plugin (compatible with other Vite plugins, e.g. <a href="https://svelte.dev/docs/kit/images#sveltejs-enhanced-img"><code>@sveltejs/enhanced-img</code></a>)</td>
+    <td>Svelte preprocessor</td>
+  </tr>
+  <tr>
+    <th colspan="3">Features</th>
+  </tr>
+  <tr>
+    <td>Frontmatter</td>
+    <td><a href="https://npmx.dev/package/gray-matter">✅ (YAML, JSON or JS)</a><br>
+    Accessible through <code>{frontmatter.variable}</code></td>
+    <td>✅ (YAML, <a href="https://mdsvex.pngwn.io/docs#frontmatter">can be changed</a>)<br>
+    Accessible through <code>{variable}</code>
+    </td>
+  </tr>
+  <tr>
+    <td><code>&lt;head></code> tag generation</td>
+    <td>✅ (from frontmatter, <a href="#headenabled">can be disabled</a>)</td>
+    <td>⚙️ (possible with layouts)</td>
+  </tr>
+  <tr>
+    <td>Syntax highlighting</td>
+    <td>⚙️ (bring your own in <a href="https://github.com/markdown-it/markdown-it#syntax-highlighting"><code>markdownItOptions.highlight</code></a>)</td>
+    <td>✅ (defaults to <a href="https://github.com/PrismJS/prism/">Prism</a>, <a href="https://mdsvex.pngwn.io/docs#highlight">can be changed</a>)</td>
+  </tr>
+  <tr>
+    <td>Replace any HTML tag after Markdown processing</td>
+    <td>❌</td>
+    <td><a href="https://mdsvex.pngwn.io/docs#custom-components">✅</a></td>
+  </tr>
+  <tr>
+    <td>Layout</td>
+    <td>Optional wrapper <code>&lt;div></code> with classes</td>
+    <td>Svelte components, configurable in frontmatter</td>
+  </td>
+  <tr>
+    <td>Fancy typography replacements<br>(e.g. <code>...</code> → <code>…</code>)</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>+page.md (in SvelteKit)</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+</table>
 
 ## :beers: Contributing
 
