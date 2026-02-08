@@ -216,7 +216,7 @@ The class name of the div that wraps the content.
   <tr>
     <td><code>&lt;head></code> tag generation</td>
     <td>✅ (from frontmatter, <a href="#headenabled">can be disabled</a>)</td>
-    <td>❌ (manual)</td>
+    <td>⚙️ (possible with layouts)</td>
   </tr>
   <tr>
     <td>Syntax highlighting</td>
