@@ -6,7 +6,7 @@ describe("transform", () => {
   const options = resolveOptions({});
   const mdToSvelte = createMarkdownProcessor(options);
 
-  it("basic", () => {
+  it("basic", async () => {
     const md = `---
 title: Hey
 ---
@@ -17,19 +17,19 @@ title: Hey
 - B
 - C
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("style", () => {
+  it("style", async () => {
     const md = `
 # Hello
 
 <style>h1 { color: red }</style>
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("script", () => {
+  it("script", async () => {
     const md = `
 # Hello
 
@@ -37,19 +37,19 @@ title: Hey
 import Foo from './Foo.vue'
 </script>
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("exposes frontmatter", () => {
+  it("exposes frontmatter", async () => {
     const md = `---
 title: Hey
 ---
 
 # Hello`;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("escapeCodeTagInterpolation", () => {
+  it("escapeCodeTagInterpolation", async () => {
     const md = `
 <div>{hello}</div>
 
@@ -57,10 +57,10 @@ title: Hey
 <div>{hello}</div>
 \`\`\`
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("scriptInsideSvelte", () => {
+  it("scriptInsideSvelte", async () => {
     const md = `
 <svelte:head><script async src="foo.js"></script></svelte:head>
 
@@ -68,10 +68,10 @@ title: Hey
 <svelte:head><script async src="foo.js"></script></svelte:head>
 \`\`\`
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("frontmatter interpolation", () => {
+  it("frontmatter interpolation", async () => {
     const md = `
 ---
 name: 'My Cool App'
@@ -81,10 +81,10 @@ name: 'My Cool App'
 
 This is {frontmatter.name}
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("use component", () => {
+  it("use component", async () => {
     const md = `---
 title: Markdown to Svelte
 ---
@@ -100,9 +100,9 @@ title: Markdown to Svelte
 </script>
 <MyComponent>You can use Svelte components in Markdown</MyComponent>
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
-  it("escape curly braces in fence", () => {
+  it("escape curly braces in fence", async () => {
     const md = `
 \`\`\`js
 function test() {
@@ -110,27 +110,27 @@ function test() {
 }
 \`\`\`
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
-  it("escape curly braces in code inline", () => {
+  it("escape curly braces in code inline", async () => {
     const md = `
 \`{...}\`
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
-  it("escape curly braces in code block", () => {
+  it("escape curly braces in code block", async () => {
     const md = `
     function test() {
         return foo
     }
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
-  it("escape curly braces in header", () => {
+  it("escape curly braces in header", async () => {
     const md = `---
 title: "\`{#if}\`"
 ---
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 });

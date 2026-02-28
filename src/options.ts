@@ -1,4 +1,4 @@
-import type * as MarkdownIt from "markdown-it";
+import type { MarkdownExit, MarkdownExitOptions } from "markdown-exit";
 import { toArray } from "./utils.ts";
 
 export interface Options {
@@ -10,18 +10,24 @@ export interface Options {
   headEnabled?: boolean;
 
   /**
-   * Options passed to Markdown It
+   * Options passed to Markdown Exit
    */
-  markdownItOptions?: MarkdownIt.Options;
+  markdownItOptions?: MarkdownExitOptions;
 
   /**
-   * Plugins for Markdown It
+   * Plugins for Markdown Exit
+   *
+   * Prefer the `use` option for better type safety
    */
-  markdownItUses?: (
-    | MarkdownIt.PluginSimple
-    | [MarkdownIt.PluginSimple | MarkdownIt.PluginWithOptions, any]
-    | any
-  )[];
+  markdownItUses?: any[];
+
+  /**
+   * Plugins for Markdown Exit
+   *
+   * @example
+   *    use: (md) => md.use(plugin1).use(plugin2, options)
+   */
+  use?: (md: MarkdownExit) => void;
 
   /**
    * Class names for wrapper div
@@ -34,8 +40,10 @@ export interface Options {
   exclude?: (string | RegExp)[] | string | RegExp | undefined;
 }
 
-export type ResolvedOptions = Required<Omit<Options, "include" | "exclude">> &
-  Pick<Options, "include" | "exclude"> & { wrapperClasses: string };
+export type ResolvedOptions = Required<
+  Omit<Options, "include" | "exclude" | "use">
+> &
+  Pick<Options, "include" | "exclude" | "use"> & { wrapperClasses: string };
 
 /**
  * Resolve options

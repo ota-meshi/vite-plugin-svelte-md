@@ -29,7 +29,7 @@ const EXTENSION_MAPPINGS: Record<string, string> = {
   rs: "rust",
 };
 
-export default (str: string, lang: string): string => {
+export function highlight(str: string, lang: string): string {
   if (!lang) {
     return wrapPre(str, "text");
   }
@@ -50,4 +50,11 @@ export default (str: string, lang: string): string => {
     return wrapPre(code, rawLang);
   }
   return wrapPre(str, "text");
-};
+}
+
+export async function asyncHighlight(
+  str: string,
+  lang: string,
+): Promise<string> {
+  return Promise.resolve(highlight(str, lang));
+}
