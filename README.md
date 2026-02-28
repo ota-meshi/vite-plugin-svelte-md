@@ -264,6 +264,26 @@ The class name of the div that wraps the content.
   </tr>
 </table>
 
+## Svelte Compatibility
+
+You might encounter issues with markdown-it plugins that produce invalid Svelte code, e.g. a TeX plugin that outputs unescaped `{` and `}` characters. In this case, the simplest workaround is to wrap the plugin output in a Svelte [`{@html ...}`](https://svelte.dev/docs/svelte/@html) tag:
+
+```js
+import { tex } from '@mdit/plugin-tex';
+import katex from 'katex';
+
+mdSvelte({
+  use: (md) =>
+    md.use(tex, {
+      // `katex.renderToString` produces HTML with unescaped `{` and `}` characters,
+      // wrap its output with {@html JSON.stringify(...)} to avoid Svelte parsing errors.
+      render: (content, displayMode) =>
+        `{@html ${JSON.stringify(katex.renderToString(content, { displayMode }))}}`,
+    }),
+});
+
+```
+
 ## :beers: Contributing
 
 Welcome contributing!
