@@ -264,7 +264,7 @@ The class name of the div that wraps the content.
   </tr>
 </table>
 
-## Svelte Compatibility
+## 🍊 Svelte Compatibility
 
 You might encounter issues with markdown-it plugins that produce invalid Svelte code, e.g. a TeX plugin that outputs unescaped `{` and `}` characters. In this case, the simplest workaround is to wrap the plugin output in a Svelte [`{@html ...}`](https://svelte.dev/docs/svelte/@html) tag:
 
