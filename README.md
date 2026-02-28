@@ -135,6 +135,7 @@ import svelteMd from "vite-plugin-svelte-md";
 svelteMd({
   headEnabled: true,
   markdownItOptions: {},
+  use: (md) => { /* ... */ },
   markdownItUses: [],
   wrapperClasses: "markdown-body",
 });
@@ -149,7 +150,7 @@ Enables head tag generation from frontmatter. The default is `true`.
 [markdown-exit](https://github.com/serkodev/markdown-exit)'s option.
 See [markdown-exit's docs](https://markdown-exit.pages.dev/reference/api/Interface.MarkdownExitOptions.html) for more details.
 
-markdown-exit is a TypeScript rewrite of [markdown-it](https://github.com/markdown-it/markdown-it), designed as a drop-in replacement. The name `markdownItOptions` was preserved for backward compatibility.
+markdown-exit is a TypeScript rewrite of [markdown-it](https://github.com/markdown-it/markdown-it), designed as a drop-in replacement. The name `markdownItOptions` was preserved for backwards compatibility.
 
 #### `use`
 
