@@ -17,17 +17,17 @@ export interface Options {
   /**
    * Plugins for Markdown Exit
    *
-   * Prefer the `use` option for better type safety
-   */
-  markdownItUses?: any[];
-
-  /**
-   * Plugins for Markdown Exit
-   *
    * @example
    *    use: (md) => md.use(plugin1).use(plugin2, options)
    */
   use?: (md: MarkdownExit) => void;
+
+  /**
+   * Plugins for Markdown Exit
+   *
+   * Prefer the `use` option for better type safety
+   */
+  markdownItUses?: any[];
 
   /**
    * Class names for wrapper div

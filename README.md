@@ -146,12 +146,28 @@ Enables head tag generation from frontmatter. The default is `true`.
 
 #### `markdownItOptions`
 
-[markdown-it](https://github.com/markdown-it/markdown-it)'s option.
-See [markdown-it's docs](https://markdown-it.github.io/markdown-it/) for more details.
+[markdown-exit](https://github.com/serkodev/markdown-exit)'s option.
+See [markdown-exit's docs](https://markdown-exit.pages.dev/reference/api/Interface.MarkdownExitOptions.html for more details.
+
+markdown-exit is a TypeScript rewrite of [markdown-it](https://github.com/markdown-it/markdown-it), designed as a drop-in replacement. The name `markdownItOptions` was preserved for backward compatibility.
+
+#### `use`
+
+A hook to register [markdown-exit](https://github.com/serkodev/markdown-exit) or [markdown-it](https://github.com/markdown-it/markdown-it) plugins, in a type-safe way.
+
+Example:
+
+```js
+svelteMd({
+  use: (md) => md.use(plugin1).use(plugin2, options),
+});
+```
+
+Note: you may encounter benign type errors when using markdown-it plugins that are not yet compatible with markdown-exit.
 
 #### `markdownItUses`
 
-An array of [markdown-it](https://github.com/markdown-it/markdown-it)'s plugins.
+An array of [markdown-exit](https://github.com/serkodev/markdown-exit) or [markdown-it](https://github.com/markdown-it/markdown-it) plugins.
 
 Example:
 
@@ -160,6 +176,8 @@ svelteMd({
   markdownItUses: [require("markdown-it-anchor"), require("markdown-it-prism")],
 });
 ```
+
+You should favor `use` over `markdownItUses` as it enables better auto-completion and type-safety.
 
 #### `wrapperClasses`
 
@@ -194,7 +212,7 @@ The class name of the div that wraps the content.
   </tr>
   <tr>
     <td>Markdown parser</td>
-    <td><a href="https://npmx.dev/package/markdown-it">markdown-it</a> (supports plugins)</td>
+    <td><a href="https://npmx.dev/package/markdown-exit">markdown-exit</a> (supports sync and async plugins)</td>
     <td><a href="https://npmx.dev/package/remark">remark</a> + <a href="https://npmx.dev/package/rehype">rehype</a>  (supports plugins)</td>
   </tr>
   <tr>
