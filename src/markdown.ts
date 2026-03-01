@@ -1,4 +1,4 @@
-import MarkdownIt from "markdown-it";
+import { createMarkdownExit } from "markdown-exit";
 import grayMatter from "gray-matter";
 import markdownItSvelteTags from "./markdown-it-svelte-tags/index.ts";
 import markdownItSvelteCurlyBracesEscape from "./markdown-it-svelte-curly-braces-escape/index.ts";
@@ -84,21 +84,21 @@ function parseHtml(html: string) {
   return { html: newHtml, moduleContext, instanceScript, svelteTags };
 }
 
-export type MarkdownProcessor = (id: string, text: string) => string;
+export type MarkdownProcessor = (id: string, text: string) => Promise<string>;
 /**
  * Creates md processor
  */
 export function createMarkdownProcessor(
   options: ResolvedOptions,
 ): MarkdownProcessor {
-  const markdownIt = new MarkdownIt({
+  const markdownIt = createMarkdownExit({
     html: true,
     linkify: true,
     typographer: true,
     ...options.markdownItOptions,
   });
   markdownIt.linkify.set({ fuzzyLink: false });
-  // eslint-disable-next-line @typescript-eslint/unbound-method -- ignore
+
   const originalValidateLink = markdownIt.validateLink;
   markdownIt.validateLink = (url) => {
     if (!originalValidateLink(url)) {
@@ -108,20 +108,21 @@ export function createMarkdownProcessor(
   };
   markdownIt.use(markdownItSvelteTags).use(markdownItSvelteCurlyBracesEscape);
 
+  options.use?.(markdownIt);
   options.markdownItUses.forEach((e) => {
     const [plugin, ...opts] = toArray(e);
 
     markdownIt.use(plugin, ...opts);
   });
 
-  return (id: string, text: string) => {
+  return async (id: string, text: string) => {
     const raw = text.trimEnd();
     const { wrapperClasses, headEnabled } = options;
 
     const parsedFrontmatter = grayMatter(raw);
 
     const plainMarkdown = parsedFrontmatter?.content ?? raw;
-    let html = markdownIt.render(plainMarkdown, { id });
+    let html = await markdownIt.renderAsync(plainMarkdown, { id });
 
     if (wrapperClasses) {
       html = `<div class="${wrapperClasses}">${html}</div>`;

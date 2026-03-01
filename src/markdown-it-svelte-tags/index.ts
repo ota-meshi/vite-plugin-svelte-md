@@ -1,10 +1,10 @@
-import type MarkdownIt from "markdown-it";
+import type { MarkdownExit } from "markdown-exit";
 
 const SVELTE_TAGS_RE = /^(?:<svelte:[a-z][^>]*>|<\/svelte:[a-z]+>)/u;
 /**
  * Svelte tags (e.g. `<svelte:head>`) plugin
  */
-export default function plugin(md: MarkdownIt): void {
+export default function plugin(md: MarkdownExit): void {
   md.inline.ruler.push("svelte-tags", (state) => {
     if (!state.md.options.html) {
       return false;

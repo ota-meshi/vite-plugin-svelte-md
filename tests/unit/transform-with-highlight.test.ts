@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { createMarkdownProcessor } from "../../src/markdown";
 import { resolveOptions } from "../../src/options";
-import highlight from "./highlight-tools/highlight";
+import { highlight, asyncHighlight } from "./highlight-tools/highlight";
 import lineNumbersPlugin from "./highlight-tools/line-numbers-plugin";
 
 describe("transform with highlight", () => {
@@ -13,7 +13,7 @@ describe("transform with highlight", () => {
   });
   const mdToSvelte = createMarkdownProcessor(options);
 
-  it("highlight", () => {
+  it("highlight", async () => {
     const md = `---
 title: Hey
 ---
@@ -30,9 +30,9 @@ function test() {
 }
 \`\`\`
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
-  it("highlight svelte", () => {
+  it("highlight svelte", async () => {
     const md = `---
 title: Hello Svelte
 ---
@@ -61,10 +61,10 @@ title: Hello Svelte
 </ul>
 \`\`\`
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("highlight svelte with line numbers", () => {
+  it("highlight svelte with line numbers", async () => {
     const options = resolveOptions({
       headEnabled: true,
       markdownItOptions: { highlight },
@@ -99,26 +99,31 @@ title: Hello Svelte
 </ul>
 \`\`\`
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  describe("highlight with fixtures", () => {
-    const options = resolveOptions({
-      headEnabled: true,
-      markdownItOptions: { highlight },
-      markdownItUses: [lineNumbersPlugin],
-    });
-    const mdToSvelte = createMarkdownProcessor(options);
-    for (const fixture of iterateFiles(path.resolve(__dirname, "./fixtures"))) {
-      it(fixture.name, () => {
-        const sfc = mdToSvelte(fixture.name, fixture.content);
-        if (process.argv.includes("--update")) {
-          fs.writeFileSync(`${fixture.path}.svelte`, sfc, "utf-8");
-        }
-        expect(sfc).toMatchSnapshot();
+  describe.each([highlight, asyncHighlight])(
+    "highlight with fixtures",
+    (highlight) => {
+      const options = resolveOptions({
+        headEnabled: true,
+        markdownItOptions: { highlight },
+        markdownItUses: [lineNumbersPlugin],
       });
-    }
-  });
+      const mdToSvelte = createMarkdownProcessor(options);
+      for (const fixture of iterateFiles(
+        path.resolve(__dirname, "./fixtures"),
+      )) {
+        it(fixture.name, async () => {
+          const sfc = await mdToSvelte(fixture.name, fixture.content);
+          if (process.argv.includes("--update")) {
+            fs.writeFileSync(`${fixture.path}.svelte`, sfc, "utf-8");
+          }
+          expect(sfc).toBe(fs.readFileSync(`${fixture.path}.svelte`, "utf-8"));
+        });
+      }
+    },
+  );
 });
 
 function* iterateFiles(rootDir: string): IterableIterator<{

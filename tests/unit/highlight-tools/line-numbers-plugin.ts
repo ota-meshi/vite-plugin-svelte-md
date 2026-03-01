@@ -1,9 +1,9 @@
-import type MarkdownIt from "markdown-it";
+import type { MarkdownExit } from "markdown-exit";
 
-export default (md: MarkdownIt): void => {
+export default (md: MarkdownExit): void => {
   const fence = md.renderer.rules.fence!;
-  md.renderer.rules.fence = (...args) => {
-    const rawCode = fence(...args);
+  md.renderer.rules.fence = async (...args) => {
+    const rawCode = await fence(...args);
     const code = rawCode.slice(
       rawCode.indexOf("<code>"),
       rawCode.indexOf("</code>"),

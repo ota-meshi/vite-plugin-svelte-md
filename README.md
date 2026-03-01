@@ -135,6 +135,7 @@ import svelteMd from "vite-plugin-svelte-md";
 svelteMd({
   headEnabled: true,
   markdownItOptions: {},
+  use: (md) => { /* ... */ },
   markdownItUses: [],
   wrapperClasses: "markdown-body",
 });
@@ -146,12 +147,28 @@ Enables head tag generation from frontmatter. The default is `true`.
 
 #### `markdownItOptions`
 
-[markdown-it](https://github.com/markdown-it/markdown-it)'s option.
-See [markdown-it's docs](https://markdown-it.github.io/markdown-it/) for more details.
+[markdown-exit](https://github.com/serkodev/markdown-exit)'s option.
+See [markdown-exit's docs](https://markdown-exit.pages.dev/reference/api/Interface.MarkdownExitOptions.html) for more details.
+
+markdown-exit is a TypeScript rewrite of [markdown-it](https://github.com/markdown-it/markdown-it), designed as a drop-in replacement. The name `markdownItOptions` was preserved for backwards compatibility.
+
+#### `use`
+
+A hook to register [markdown-exit](https://github.com/serkodev/markdown-exit) or [markdown-it](https://github.com/markdown-it/markdown-it) plugins, in a type-safe way.
+
+Example:
+
+```js
+svelteMd({
+  use: (md) => md.use(plugin1).use(plugin2, options),
+});
+```
+
+Note: you may encounter benign type errors when using markdown-it plugins that are not yet compatible with markdown-exit.
 
 #### `markdownItUses`
 
-An array of [markdown-it](https://github.com/markdown-it/markdown-it)'s plugins.
+An array of [markdown-exit](https://github.com/serkodev/markdown-exit) or [markdown-it](https://github.com/markdown-it/markdown-it) plugins.
 
 Example:
 
@@ -160,6 +177,8 @@ svelteMd({
   markdownItUses: [require("markdown-it-anchor"), require("markdown-it-prism")],
 });
 ```
+
+You should favor `use` over `markdownItUses` as it enables better auto-completion and type-safety.
 
 #### `wrapperClasses`
 
@@ -194,7 +213,7 @@ The class name of the div that wraps the content.
   </tr>
   <tr>
     <td>Markdown parser</td>
-    <td><a href="https://npmx.dev/package/markdown-it">markdown-it</a> (supports plugins)</td>
+    <td><a href="https://npmx.dev/package/markdown-exit">markdown-exit</a> (supports sync and async plugins)</td>
     <td><a href="https://npmx.dev/package/remark">remark</a> + <a href="https://npmx.dev/package/rehype">rehype</a>  (supports plugins)</td>
   </tr>
   <tr>
@@ -244,6 +263,26 @@ The class name of the div that wraps the content.
     <td>✅</td>
   </tr>
 </table>
+
+## 🍊 Svelte Compatibility
+
+You might encounter issues with markdown-it plugins that produce invalid Svelte code, e.g. a TeX plugin that outputs unescaped `{` and `}` characters. In this case, the simplest workaround is to wrap the plugin output in a Svelte [`{@html ...}`](https://svelte.dev/docs/svelte/@html) tag:
+
+```js
+import { tex } from '@mdit/plugin-tex';
+import katex from 'katex';
+
+mdSvelte({
+  use: (md) =>
+    md.use(tex, {
+      // `katex.renderToString` produces HTML with unescaped `{` and `}` characters,
+      // wrap its output with {@html JSON.stringify(...)} to avoid Svelte parsing errors.
+      render: (content, displayMode) =>
+        `{@html ${JSON.stringify(katex.renderToString(content, { displayMode }))}}`,
+    }),
+});
+
+```
 
 ## :beers: Contributing
 

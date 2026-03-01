@@ -6,7 +6,7 @@ describe("transform with head", () => {
   const options = resolveOptions({ headEnabled: true });
   const mdToSvelte = createMarkdownProcessor(options);
 
-  it("basic", () => {
+  it("basic", async () => {
     const md = `---
 title: Hey
 ---
@@ -17,10 +17,10 @@ title: Hey
 - B
 - C
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it("head tag", () => {
+  it("head tag", async () => {
     const md = `---
 title: Hey
 ---
@@ -41,6 +41,6 @@ title: Hey
 
 <MyComponent />
 `;
-    expect(mdToSvelte("", md)).toMatchSnapshot();
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 });
