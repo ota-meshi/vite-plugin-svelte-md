@@ -1,5 +1,11 @@
 # vite-plugin-svelte-md
 
+## 0.4.1
+
+### Patch Changes
+
+- Let markdown-exit manage its own type dependencies. (See [markdown-exit#27](https://github.com/serkodev/markdown-exit/issues/27)) ([#132](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/132))
+
 ## 0.4.0
 
 ### Minor Changes
