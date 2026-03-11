@@ -1,3 +1,4 @@
+import * as devalue from "devalue";
 import { createMarkdownExit } from "markdown-exit";
 import grayMatter from "gray-matter";
 import markdownItSvelteTags from "./markdown-it-svelte-tags/index.ts";
@@ -135,7 +136,7 @@ export function createMarkdownProcessor(
       options,
     );
     parsedHtml.moduleContext.prepend(
-      `export const frontmatter = ${JSON.stringify(frontmatter)}`,
+      `export const frontmatter = ${devalue.uneval(frontmatter)};`,
     );
     if (headEnabled && head) {
       let svelteHead = parsedHtml.svelteTags.find(

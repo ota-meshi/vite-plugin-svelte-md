@@ -61,6 +61,10 @@ export default defineConfig([
           format: null,
         },
       ],
+      "n/no-unsupported-features/node-builtins": [
+        "error",
+        { version: ">=20.20.0" },
+      ],
 
       "no-implicit-globals": "off",
       "@typescript-eslint/no-non-null-assertion": "off",

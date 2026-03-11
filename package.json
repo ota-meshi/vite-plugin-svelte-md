@@ -54,6 +54,7 @@
     "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-beta.0"
   },
   "dependencies": {
+    "devalue": "^5.6.4",
     "gray-matter": "^4.0.3",
     "markdown-exit": "^1.0.0-beta.9"
   },
