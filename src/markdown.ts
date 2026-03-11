@@ -15,7 +15,7 @@ const FRONTMATTER_RE =
   /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/;
 
 /**
- * Adapted from https://github.com/vfile/vfile-matter/blob/main/lib/index.js
+ * Adapted from https://github.com/vfile/vfile-matter/blob/20c6193bb118f4c65488e0daaf2e66f5cafc733f/lib/index.js
  * under MIT License: Copyright (c) Titus Wormer <tituswormer@gmail.com>
  */
 function grayMatter(input: string) {
