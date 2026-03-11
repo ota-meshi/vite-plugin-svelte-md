@@ -1,5 +1,5 @@
 import { createMarkdownExit } from "markdown-exit";
-import grayMatter from "gray-matter";
+import * as yaml from "yaml";
 import markdownItSvelteTags from "./markdown-it-svelte-tags/index.ts";
 import markdownItSvelteCurlyBracesEscape from "./markdown-it-svelte-curly-braces-escape/index.ts";
 import { toArray } from "./utils.ts";
@@ -10,8 +10,24 @@ const SCRIPTS_RE = /(<script[^>]*>)([\s\S]*?)<\/script>/gu;
 const SVELTE_TAGS_RE = /(<svelte:[a-z][^>]*>)([\s\S]*?)<\/svelte:[a-z]+>/gu;
 const GET_SVELTE_TAG_NAME_RE = /^svelte:[a-z]+/u;
 const IS_MODULE_CONTEXT_RE = /\bcontext\s*=\s*["']?module["']?/u;
-
 const IS_SVELTE_TAG_NAME_RE = /^svelte:[a-z]+$/u;
+const FRONTMATTER_RE =
+  /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/;
+
+/**
+ * Adapted from https://github.com/vfile/vfile-matter/blob/main/lib/index.js
+ * under MIT License: Copyright (c) Titus Wormer <tituswormer@gmail.com>
+ */
+function grayMatter(input: string) {
+  const match = FRONTMATTER_RE.exec(input);
+  if (match) {
+    return {
+      data: yaml.parse(match[1] || "") || {},
+      content: input.slice(match[0].length),
+    };
+  }
+  return { data: {}, content: input };
+}
 
 class TagContent {
   private startTag = "";
@@ -121,8 +137,7 @@ export function createMarkdownProcessor(
 
     const parsedFrontmatter = grayMatter(raw);
 
-    const plainMarkdown = parsedFrontmatter?.content ?? raw;
-    let html = await markdownIt.renderAsync(plainMarkdown, { id });
+    let html = await markdownIt.renderAsync(parsedFrontmatter.content, { id });
 
     if (wrapperClasses) {
       html = `<div class="${wrapperClasses}">${html}</div>`;
@@ -131,7 +146,7 @@ export function createMarkdownProcessor(
     const parsedHtml = parseHtml(html);
 
     const { head, frontmatter } = frontmatterPreprocess(
-      parsedFrontmatter?.data ?? {},
+      parsedFrontmatter.data,
       options,
     );
     parsedHtml.moduleContext.prepend(
