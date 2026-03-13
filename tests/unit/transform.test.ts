@@ -134,7 +134,7 @@ title: "\`{#if}\`"
     expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
 
-  it.only("parses Svelte components as HTML", async () => {
+  it("parses Svelte components as HTML", async () => {
     const md = `Basic
 
 <Component foo="foo" bar={"bar"} />
