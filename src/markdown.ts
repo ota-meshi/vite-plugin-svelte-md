@@ -1,6 +1,7 @@
 import * as devalue from "devalue";
 import { createMarkdownExit } from "markdown-exit";
 import * as yaml from "yaml";
+import markdownItSvelteComponents from "./markdown-it-svelte-components/index.ts";
 import markdownItSvelteTags from "./markdown-it-svelte-tags/index.ts";
 import markdownItSvelteCurlyBracesEscape from "./markdown-it-svelte-curly-braces-escape/index.ts";
 import { toArray } from "./utils.ts";
@@ -123,7 +124,10 @@ export function createMarkdownProcessor(
     }
     return !IS_SVELTE_TAG_NAME_RE.test(url);
   };
-  markdownIt.use(markdownItSvelteTags).use(markdownItSvelteCurlyBracesEscape);
+  markdownIt
+    .use(markdownItSvelteTags)
+    .use(markdownItSvelteCurlyBracesEscape)
+    .use(markdownItSvelteComponents);
 
   options.use?.(markdownIt);
   options.markdownItUses.forEach((e) => {
