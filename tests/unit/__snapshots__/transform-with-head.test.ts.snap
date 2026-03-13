@@ -2,7 +2,7 @@
 
 exports[`transform with head > basic 1`] = `
 "<script context="module">
-export const frontmatter = {"title":"Hey"}
+export const frontmatter = {title:"Hey"};
 </script>
 
 <svelte:head>
@@ -20,7 +20,7 @@ export const frontmatter = {"title":"Hey"}
 
 exports[`transform with head > head tag 1`] = `
 "<script context="module">
-export const frontmatter = {"title":"Hey"}
+export const frontmatter = {title:"Hey"};
 </script>
 <script>
 

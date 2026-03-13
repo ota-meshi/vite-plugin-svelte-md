@@ -2,7 +2,7 @@
 
 exports[`transform > basic 1`] = `
 "<script context="module">
-export const frontmatter = {"title":"Hey"}
+export const frontmatter = {title:"Hey"};
 </script>
 
 <svelte:head>
@@ -20,7 +20,7 @@ export const frontmatter = {"title":"Hey"}
 
 exports[`transform > escape curly braces in code block 1`] = `
 "<script context="module">
-export const frontmatter = {}
+export const frontmatter = {};
 </script>
 
 
@@ -33,7 +33,7 @@ export const frontmatter = {}
 
 exports[`transform > escape curly braces in code inline 1`] = `
 "<script context="module">
-export const frontmatter = {}
+export const frontmatter = {};
 </script>
 
 
@@ -43,7 +43,7 @@ export const frontmatter = {}
 
 exports[`transform > escape curly braces in fence 1`] = `
 "<script context="module">
-export const frontmatter = {}
+export const frontmatter = {};
 </script>
 
 
@@ -56,7 +56,7 @@ export const frontmatter = {}
 
 exports[`transform > escape curly braces in header 1`] = `
 "<script context="module">
-export const frontmatter = {"title":"\`{#if}\`"}
+export const frontmatter = {title:"\`{#if}\`"};
 </script>
 
 <svelte:head>
@@ -68,7 +68,7 @@ export const frontmatter = {"title":"\`{#if}\`"}
 
 exports[`transform > escapeCodeTagInterpolation 1`] = `
 "<script context="module">
-export const frontmatter = {}
+export const frontmatter = {};
 </script>
 
 
@@ -80,7 +80,7 @@ export const frontmatter = {}
 
 exports[`transform > exposes frontmatter 1`] = `
 "<script context="module">
-export const frontmatter = {"title":"Hey"}
+export const frontmatter = {title:"Hey"};
 </script>
 
 <svelte:head>
@@ -93,7 +93,7 @@ export const frontmatter = {"title":"Hey"}
 
 exports[`transform > frontmatter interpolation 1`] = `
 "<script context="module">
-export const frontmatter = {}
+export const frontmatter = {};
 </script>
 
 
@@ -106,7 +106,7 @@ export const frontmatter = {}
 
 exports[`transform > script 1`] = `
 "<script context="module">
-export const frontmatter = {}
+export const frontmatter = {};
 </script>
 <script lang="ts">
 
@@ -120,7 +120,7 @@ import Foo from './Foo.vue'
 
 exports[`transform > scriptInsideSvelte 1`] = `
 "<script context="module">
-export const frontmatter = {}
+export const frontmatter = {};
 </script>
 
 <svelte:head>
@@ -134,7 +134,7 @@ export const frontmatter = {}
 
 exports[`transform > style 1`] = `
 "<script context="module">
-export const frontmatter = {}
+export const frontmatter = {};
 </script>
 
 
@@ -144,7 +144,7 @@ export const frontmatter = {}
 
 exports[`transform > use component 1`] = `
 "<script context="module">
-export const frontmatter = {"title":"Markdown to Svelte"}
+export const frontmatter = {title:"Markdown to Svelte"};
 </script>
 <script>
 

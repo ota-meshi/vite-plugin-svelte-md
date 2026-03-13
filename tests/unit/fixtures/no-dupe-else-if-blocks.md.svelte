@@ -1,5 +1,5 @@
 <script context="module">
-export const frontmatter = {"pageClass":"rule-details","sidebarDepth":0,"title":"@ota-meshi/svelte/no-dupe-else-if-blocks","description":"disallow duplicate conditions in `{#if}` / `{:else if}` chains","since":"v0.0.1"}
+export const frontmatter = {pageClass:"rule-details",sidebarDepth:0,title:"@ota-meshi/svelte/no-dupe-else-if-blocks",description:"disallow duplicate conditions in `{#if}` / `{:else if}` chains",since:"v0.0.1"};
 </script>
 
 <svelte:head>
