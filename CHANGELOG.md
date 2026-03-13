@@ -1,5 +1,15 @@
 # vite-plugin-svelte-md
 
+## 0.5.0
+
+### Minor Changes
+
+- Replace [`gray-matter` (frontmatter parser)](https://npmx.dev/package/gray-matter) with a regex and [`yaml.parse()`](https://npmx.dev/package/yaml). Support for JS and JSON frontmatters was dropped. ([#135](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/135))
+
+### Patch Changes
+
+- Use [`devalue`](https://npmx.dev/package/devalue) to stringify the frontmatter instead of `JSON.stringify`, preventing accidental parse errors and enabling a wider ranger of values. ([#134](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/134))
+
 ## 0.4.1
 
 ### Patch Changes
