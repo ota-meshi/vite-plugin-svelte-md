@@ -226,7 +226,7 @@ The class name of the div that wraps the content.
   </tr>
   <tr>
     <td>Frontmatter</td>
-    <td><a href="https://npmx.dev/package/gray-matter">✅ (YAML, JSON or JS)</a><br>
+    <td>✅ (YAML)<br>
     Accessible through <code>{frontmatter.variable}</code></td>
     <td>✅ (YAML, <a href="https://mdsvex.pngwn.io/docs#frontmatter">can be changed</a>)<br>
     Accessible through <code>{variable}</code>
