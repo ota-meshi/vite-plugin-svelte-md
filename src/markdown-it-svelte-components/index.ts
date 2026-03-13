@@ -8,6 +8,8 @@ const SVELTE_COMPONENT_RE =
  * Parse Svelte components as html_block and html_inline tokens
  */
 export default function plugin(md: MarkdownExit): void {
+  // Find lines starting with `<Something` and consider as HTML all lines until an ending `>` is found
+  // Adapted from https://github.com/serkodev/markdown-exit/blob/fe1351070a5841426223ab4a0a5c7874ba2b1257/packages/markdown-exit/src/parser/block/rules/html_block.ts#L20-L77
   md.block.ruler.after(
     "html_block",
     "svelte_tag",
@@ -50,6 +52,7 @@ export default function plugin(md: MarkdownExit): void {
   );
 
   // Same logic as above, find `<Something` then `>` in inline text
+  // Adapted from https://github.com/serkodev/markdown-exit/blob/fe1351070a5841426223ab4a0a5c7874ba2b1257/packages/markdown-exit/src/parser/inline/rules/html_inline.ts#L19-L55
   md.inline.ruler.after("html_inline", "svelte_tag_inline", (state) => {
     if (!state.md.options.html) return false;
 
