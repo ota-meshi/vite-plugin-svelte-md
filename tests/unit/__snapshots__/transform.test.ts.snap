@@ -207,6 +207,5 @@ export const frontmatter = {title:"Markdown to Svelte"};
 <li>List</li>
 </ul>
 
-<p><MyComponent>You can use Svelte components in Markdown</MyComponent></p>
-</div>"
+<MyComponent>You can use Svelte components in Markdown</MyComponent></div>"
 `;
