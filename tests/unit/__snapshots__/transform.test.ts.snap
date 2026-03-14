@@ -119,8 +119,8 @@ export const frontmatter = {};
 />
 <p>With children</p>
 <Component foo="foo" bar={"bar"}>
-<p>I’m <strong>not</strong> markdown
-</Component></p>
+  I'm **not** markdown
+</Component>
 <p>With markdown children</p>
 <Component foo="foo" bar={"bar"}>
 <h1>Heading</h1>

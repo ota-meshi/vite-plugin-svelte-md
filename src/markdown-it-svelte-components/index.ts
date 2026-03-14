@@ -1,14 +1,19 @@
 import type { MarkdownExit } from "markdown-exit";
 
+// Adapted from
 // https://github.com/sveltejs/svelte/blob/3dbd95075c324304d668d72e0c08ed958173fb8f/packages/svelte/src/compiler/phases/1-parse/state/element.js#L39-L42
-const SVELTE_COMPONENT_RE =
-  /^<(?:\p{Lu}[\p{ID_Continue}$.\u200c\u200d]*|\p{ID_Start}[\p{ID_Continue}$\u200c\u200d]*(?:\.[\p{ID_Continue}$\u200c\u200d]+)+)/u;
+// and
+// https://github.com/serkodev/markdown-exit/blob/fe1351070a5841426223ab4a0a5c7874ba2b1257/packages/markdown-exit/src/parser/block/rules/html_block.ts#L16
+const SVELTE_COMPONENT_BLOCK_RE =
+  /^<\/?(?:\p{Lu}[\p{ID_Continue}$.\u200c\u200d]*|\p{ID_Start}[\p{ID_Continue}$\u200c\u200d]*(?:\.[\p{ID_Continue}$\u200c\u200d]+)+)(?=\s|\/?>|$)/u;
+const SVELTE_COMPONENT_INLINE_RE =
+  /^<\/?(?:\p{Lu}|\p{ID_Start}[\p{ID_Continue}$\u200c\u200d]*\.[\p{ID_Continue}$\u200c\u200d])[^>]+>/u;
 
 /**
  * Parse Svelte components as html_block and html_inline tokens
  */
 export default function plugin(md: MarkdownExit): void {
-  // Find lines starting with `<Something` and consider as HTML all lines until an ending `>` is found
+  // Find lines starting with `<Something` and apply the same logic as for https://spec.commonmark.org/0.30/#html-blocks, #6
   // Adapted from https://github.com/serkodev/markdown-exit/blob/fe1351070a5841426223ab4a0a5c7874ba2b1257/packages/markdown-exit/src/parser/block/rules/html_block.ts#L20-L77
   md.block.ruler.after(
     "html_block",
@@ -21,18 +26,18 @@ export default function plugin(md: MarkdownExit): void {
         state.eMarks[startLine],
       );
 
-      if (!SVELTE_COMPONENT_RE.test(lineText)) return false;
+      if (!SVELTE_COMPONENT_BLOCK_RE.test(lineText)) return false;
 
       // We found `<Something` starting a line, let's find a `>` that ends a line
-      let nextLine = startLine;
+      let nextLine = startLine + 1;
 
-      while (nextLine < endLine) {
+      while (nextLine < endLine && state.sCount[nextLine] >= state.blkIndent) {
         const nextLineText = state.src.slice(
           state.bMarks[nextLine] + state.tShift[nextLine],
           state.eMarks[nextLine],
         );
+        if (nextLineText === "") break;
         nextLine++; // Make `nextLine` always point to the next line
-        if (nextLineText.trimEnd().endsWith(">")) break;
       }
 
       // Update the line pointer
@@ -51,24 +56,19 @@ export default function plugin(md: MarkdownExit): void {
     },
   );
 
-  // Same logic as above, find `<Something` then `>` in inline text
+  // Implement https://spec.commonmark.org/0.30/#tag-name for Svelte components
   // Adapted from https://github.com/serkodev/markdown-exit/blob/fe1351070a5841426223ab4a0a5c7874ba2b1257/packages/markdown-exit/src/parser/inline/rules/html_inline.ts#L19-L55
   md.inline.ruler.after("html_inline", "svelte_tag_inline", (state) => {
     if (!state.md.options.html) return false;
 
     const line = state.src.slice(state.pos, state.posMax);
-    const match = SVELTE_COMPONENT_RE.exec(line);
+    const match = SVELTE_COMPONENT_INLINE_RE.exec(line);
 
     if (!match) return false;
 
-    const end = line.indexOf(">", match[0].length);
-
-    if (end === -1) return false;
-
-    state.pos += end + 1;
-
+    state.pos += match[0].length;
     const token = state.push("html_inline", "", 0);
-    token.content = line.slice(match.index, end + 1);
+    token.content = line.slice(0, match[0].length);
 
     return true;
   });
