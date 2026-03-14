@@ -133,4 +133,56 @@ title: "\`{#if}\`"
 `;
     expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
+
+  it("parses Svelte components as HTML", async () => {
+    const md = `Basic
+
+<Component foo="foo" bar={"bar"} />
+
+Multi-line
+
+<Component
+  foo="foo"
+  bar={"bar"}
+/>
+
+With children
+
+<Component foo="foo" bar={"bar"}>
+  I'm **not** markdown
+</Component>
+
+With markdown children
+
+<Component foo="foo" bar={"bar"}>
+
+# Heading
+
+I'm **markdown** inside a component
+
+</Component>
+
+Works in lists too
+
+- <Component
+    foo="foo"
+    bar={"bar"}
+  />
+
+Does not break indent-based code blocks
+
+    <Component
+      foo="foo"
+      bar={"bar"}
+    />
+
+Inline component <Comp foo="foo" bar={"bar"} /> also works
+
+Even multiline <Comp
+  foo="foo"
+  bar={"bar"}
+/> works
+`;
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
+  });
 });

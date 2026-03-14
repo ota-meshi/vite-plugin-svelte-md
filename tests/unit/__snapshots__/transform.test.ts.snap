@@ -104,6 +104,51 @@ export const frontmatter = {};
 </div>"
 `;
 
+exports[`transform > parses Svelte components as HTML 1`] = `
+"<script context="module">
+export const frontmatter = {};
+</script>
+
+
+<div class="markdown-body"><p>Basic</p>
+<Component foo="foo" bar={"bar"} />
+<p>Multi-line</p>
+<Component
+  foo="foo"
+  bar={"bar"}
+/>
+<p>With children</p>
+<Component foo="foo" bar={"bar"}>
+  I'm **not** markdown
+</Component>
+<p>With markdown children</p>
+<Component foo="foo" bar={"bar"}>
+<h1>Heading</h1>
+<p>I’m <strong>markdown</strong> inside a component</p>
+</Component>
+<p>Works in lists too</p>
+<ul>
+<li>
+<Component
+  foo="foo"
+  bar={"bar"}
+/>
+</li>
+</ul>
+<p>Does not break indent-based code blocks</p>
+<pre><code>&lt;Component
+  foo=&quot;foo&quot;
+  bar=&#123;&quot;bar&quot;&#125;
+/&gt;
+</code></pre>
+<p>Inline component <Comp foo="foo" bar={"bar"} /> also works</p>
+<p>Even multiline <Comp
+  foo="foo"
+  bar={"bar"}
+/> works</p>
+</div>"
+`;
+
 exports[`transform > script 1`] = `
 "<script context="module">
 export const frontmatter = {};
@@ -162,6 +207,5 @@ export const frontmatter = {title:"Markdown to Svelte"};
 <li>List</li>
 </ul>
 
-<p><MyComponent>You can use Svelte components in Markdown</MyComponent></p>
-</div>"
+<MyComponent>You can use Svelte components in Markdown</MyComponent></div>"
 `;
