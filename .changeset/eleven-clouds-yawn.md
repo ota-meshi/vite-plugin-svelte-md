@@ -2,4 +2,4 @@
 "vite-plugin-svelte-md": patch
 ---
 
-Parse Svelte components as HTML.
+In markdown, parse Svelte components as HTML block elements.
