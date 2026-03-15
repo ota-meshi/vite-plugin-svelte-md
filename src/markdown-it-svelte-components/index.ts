@@ -5,7 +5,7 @@ import type { MarkdownExit } from "markdown-exit";
 const SVELTE_COMPONENT_BLOCK_RE =
   /^<\/?(?:\p{Lu}[\p{ID_Continue}$.\u200c\u200d]*|\p{ID_Start}[\p{ID_Continue}$\u200c\u200d]*(?:\.[\p{ID_Continue}$\u200c\u200d]+)+)(?=\s|\/?>|$)/u;
 const SVELTE_COMPONENT_INLINE_RE =
-  /^<\/?(?:\p{Lu}|\p{ID_Start}[\p{ID_Continue}$\u200c\u200d]*\.[\p{ID_Continue}$\u200c\u200d])[^>]+>/u;
+  /^<\/?(?:\p{Lu}[\p{ID_Continue}$.\u200c\u200d]*|\p{ID_Start}[\p{ID_Continue}$\u200c\u200d]*(?:\.[\p{ID_Continue}$\u200c\u200d]+)+)(?:\s[^>]*|\/?)>/u;
 
 /**
  * Markdown-exit plugin to extend the HTML CommonMark specification to recognize Svelte components as HTML tags, both for block and inline parsing.
