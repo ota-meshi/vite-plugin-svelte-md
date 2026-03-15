@@ -24,7 +24,7 @@ export default function plugin(md: MarkdownExit): void {
   md.block.ruler.after(
     "html_block",
     "svelte_block",
-    (state, startLine, endLine) => {
+    (state, startLine, endLine, silent) => {
       // No need to run the rule if HTML is not enabled
       if (!state.md.options.html) return false;
 
@@ -37,6 +37,9 @@ export default function plugin(md: MarkdownExit): void {
       // Check if the line starts with `<` or `</` followed by a valid Svelte component name
       // followed by a space, the end of the line, the string `>`, or the string `/>`
       if (!SVELTE_COMPONENT_BLOCK_RE.test(lineText)) return false;
+
+      // Svelte components can close paragraphs, references and blockquotes
+      if (silent) return true;
 
       // "End condition: line is followed by a blank line."
       // Let's find the next blank line
@@ -67,11 +70,14 @@ export default function plugin(md: MarkdownExit): void {
 
       return true;
     },
+    // List of rules that can be interrupted by a Svelte component
+    // (the rule will be called with silent=true to see if the current block should be interrupted)
+    { alt: ["paragraph", "reference", "blockquote"] },
   );
 
   // Extend https://spec.commonmark.org/0.30/#tag-name for Svelte components
   // Adapted from https://github.com/serkodev/markdown-exit/blob/fe1351070a5841426223ab4a0a5c7874ba2b1257/packages/markdown-exit/src/parser/inline/rules/html_inline.ts#L19-L55
-  md.inline.ruler.after("html_inline", "svelte_inline", (state) => {
+  md.inline.ruler.after("html_inline", "svelte_inline", (state, silent) => {
     if (!state.md.options.html) return false;
 
     const line = state.src.slice(state.pos, state.posMax);
@@ -81,10 +87,12 @@ export default function plugin(md: MarkdownExit): void {
 
     if (!match) return false;
 
-    state.pos += match[0].length;
-    const token = state.push("html_inline", "", 0);
-    token.content = line.slice(0, match[0].length);
+    if (!silent) {
+      const token = state.push("html_inline", "", 0);
+      token.content = line.slice(0, match[0].length);
+    }
 
+    state.pos += match[0].length;
     return true;
   });
 }

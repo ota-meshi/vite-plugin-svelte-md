@@ -182,6 +182,9 @@ Even multiline <Comp
   foo="foo"
   bar={"bar"}
 /> works
+
+A component will close the current paragraph
+<Component />
 `;
     expect(await mdToSvelte("", md)).toMatchSnapshot();
   });

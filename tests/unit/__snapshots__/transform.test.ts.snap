@@ -146,7 +146,8 @@ export const frontmatter = {};
   foo="foo"
   bar={"bar"}
 /> works</p>
-</div>"
+<p>A component will close the current paragraph</p>
+<Component /></div>"
 `;
 
 exports[`transform > script 1`] = `
