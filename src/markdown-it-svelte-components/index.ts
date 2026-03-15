@@ -43,21 +43,19 @@ export default function plugin(md: MarkdownExit): void {
 
       // "End condition: line is followed by a blank line."
       // Let's find the next blank line
-      state.line++;
-
-      while (
+      do {
+        state.line++;
+      } while (
         // Break at the end of the document
         state.line < endLine &&
-        // Break if the line is under-intended, it means that a list item or a blockquote ended and the HTML block should end as well
+        // Break if the line is under-intended, meaning that a list item ended and the HTML block should end as well
         state.sCount[state.line] >= state.blkIndent &&
         // Break if the line is blank
         state.src.slice(
           state.bMarks[state.line] + state.tShift[state.line],
           state.eMarks[state.line],
         ) !== ""
-      ) {
-        state.line++;
-      }
+      );
 
       const token = state.push("html_block", "", 0);
       token.map = [startLine, state.line];
