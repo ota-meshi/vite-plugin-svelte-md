@@ -1,5 +1,5 @@
 ---
-"vite-plugin-svelte-md": patch
+"vite-plugin-svelte-md": minor
 ---
 
-In markdown, parse Svelte components as HTML block elements.
+Extend Markdown parsing to recognize Svelte components as HTML blocks and inline HTML tags.

@@ -281,8 +281,17 @@ mdSvelte({
         `{@html ${JSON.stringify(katex.renderToString(content, { displayMode }))}}`,
     }),
 });
-
 ```
+
+## 🥽 Markdown Compatibility
+
+`vite-plugin-svelte-md` is built on top of [markdown-exit](https://github.com/serkodev/markdown-exit), a TypeScript rewrite of [markdown-it](https://github.com/markdown-it/markdown-it), which announces 100% [CommonMark](https://commonmark.org/) compliance. However, for better compatibility with Svelte, HTML tag recognition has been extended to support Svelte components. In practice, it means that we interpret the [CommonMark HTML blocks specification](https://spec.commonmark.org/0.30/#html-blocks) item 6 as follows:
+
+6. Start condition: line begins the string `<` or `</` followed by one of the strings (case-insensitive) `address`, ..., `ul` **or a valid Svelte component name** followed by a space, a tab, the end of the line, the string `>`, or the string `/>`.
+
+Inline HTML parsing is also extended to support Svelte components, so that you can use them in the middle of a paragraph.
+
+Please [open an issue](https://github.com/ota-meshi/vite-plugin-svelte-md/issues/new) if this Markdown extension causes issues with your content.
 
 ## :beers: Contributing
 
