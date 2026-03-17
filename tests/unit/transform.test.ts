@@ -185,6 +185,8 @@ Even multiline <Comp
 
 A component will close the current paragraph
 <Component />
+
+This one is invalid an will be </Ignored/>
 `;
     expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
