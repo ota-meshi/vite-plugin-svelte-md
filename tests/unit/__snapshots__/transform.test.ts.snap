@@ -149,6 +149,9 @@ export const frontmatter = {};
 <p>A component will close the current paragraph</p>
 <Component />
 <p>This one is invalid an will be &lt;/Ignored/&gt;</p>
+<p>Example 616</p>
+<p><a foo="bar" bam = 'baz <em>"</em>'
+_boolean zoop:33=zoop:33 /></p>
 </div>"
 `;
 
