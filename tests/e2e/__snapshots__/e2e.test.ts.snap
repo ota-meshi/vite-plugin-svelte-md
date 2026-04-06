@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`vite5 1`] = `
+{
+  "body": "<div class="markdown-body"><h1>Hello World!</h1> <pre><code class="language-svelte">&lt;script>
+  let count = $state(0)
+&lt;/script>
+
+&lt;p>Count: {count}&lt;/p>
+</code></pre></div>",
+  "frontmatter": {
+    "title": "Vite Example",
+  },
+  "head": "<meta property="og:title" content="Vite Example"/><title>Vite Example</title>",
+}
+`;
+
+exports[`vite6 1`] = `
+{
+  "body": "<div class="markdown-body"><h1>Hello World!</h1> <pre><code class="language-svelte">&lt;script>
+  let count = $state(0)
+&lt;/script>
+
+&lt;p>Count: {count}&lt;/p>
+</code></pre></div>",
+  "frontmatter": {
+    "title": "Vite Example",
+  },
+  "head": "<meta property="og:title" content="Vite Example"/><title>Vite Example</title>",
+}
+`;
+
+exports[`vite7 1`] = `
+{
+  "body": "<div class="markdown-body"><h1>Hello World!</h1> <pre><code class="language-svelte">&lt;script>
+  let count = $state(0)
+&lt;/script>
+
+&lt;p>Count: {count}&lt;/p>
+</code></pre></div>",
+  "frontmatter": {
+    "title": "Vite Example",
+  },
+  "head": "<meta property="og:title" content="Vite Example"/><title>Vite Example</title>",
+}
+`;
+
+exports[`vite8 1`] = `
+{
+  "body": "<div class="markdown-body"><h1>Hello World!</h1> <pre><code class="language-svelte">&lt;script>
+  let count = $state(0)
+&lt;/script>
+
+&lt;p>Count: {count}&lt;/p>
+</code></pre></div>",
+  "frontmatter": {
+    "title": "Vite Example",
+  },
+  "head": "<meta property="og:title" content="Vite Example"/><title>Vite Example</title>",
+}
+`;
