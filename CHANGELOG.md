@@ -1,5 +1,11 @@
 # vite-plugin-svelte-md
 
+## 0.6.0
+
+### Minor Changes
+
+- Replace deprecated `context="module"` with `module` attribute in generated Svelte script tags ([#143](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/143))
+
 ## 0.5.0
 
 ### Minor Changes
