@@ -42,7 +42,7 @@ title: Markdown to Svelte
 Output:
 
 ```svelte
-<script context="module">
+<script module>
   export const frontmatter = { title: "Markdown to Svelte" };
 </script>
 

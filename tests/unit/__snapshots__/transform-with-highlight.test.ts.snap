@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`transform with highlight > highlight 1`] = `
-"<script context="module">
+"<script module>
 export const frontmatter = {title:"Hey"};
 </script>
 
@@ -23,7 +23,7 @@ export const frontmatter = {title:"Hey"};
 `;
 
 exports[`transform with highlight > highlight svelte 1`] = `
-"<script context="module">
+"<script module>
 export const frontmatter = {title:"Hello Svelte"};
 </script>
 
@@ -56,7 +56,7 @@ export const frontmatter = {title:"Hello Svelte"};
 `;
 
 exports[`transform with highlight > highlight svelte with line numbers 1`] = `
-"<script context="module">
+"<script module>
 export const frontmatter = {title:"Hello Svelte"};
 </script>
 

@@ -10,7 +10,7 @@ import type { ResolvedOptions } from "./options.ts";
 const SCRIPTS_RE = /(<script[^>]*>)([\s\S]*?)<\/script>/gu;
 const SVELTE_TAGS_RE = /(<svelte:[a-z][^>]*>)([\s\S]*?)<\/svelte:[a-z]+>/gu;
 const GET_SVELTE_TAG_NAME_RE = /^svelte:[a-z]+/u;
-const IS_MODULE_CONTEXT_RE = /\bcontext\s*=\s*["']?module["']?/u;
+const IS_MODULE_CONTEXT_RE = /\bcontext\s*=\s*["']?module["']?|\bmodule\b/u;
 const IS_SVELTE_TAG_NAME_RE = /^svelte:[a-z]+$/u;
 const FRONTMATTER_RE =
   /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/;
@@ -74,7 +74,7 @@ ${this.contents.join("\n")}
 
 /** Parse HTML */
 function parseHtml(html: string) {
-  const moduleContext = new TagContent("script", 'context="module"');
+  const moduleContext = new TagContent("script", "module");
   const instanceScript = new TagContent("script");
   const svelteTags: TagContent[] = [];
   let newHtml = html.replace(SVELTE_TAGS_RE, (_, startTag, inner) => {
