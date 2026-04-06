@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`transform with head > basic 1`] = `
-"<script context="module">
+"<script module>
 export const frontmatter = {title:"Hey"};
 </script>
 
@@ -19,7 +19,7 @@ export const frontmatter = {title:"Hey"};
 `;
 
 exports[`transform with head > head tag 1`] = `
-"<script context="module">
+"<script module>
 export const frontmatter = {title:"Hey"};
 </script>
 <script>
