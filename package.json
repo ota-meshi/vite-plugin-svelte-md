@@ -72,7 +72,7 @@
     "escape-html": "^1.0.3",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.0.0",
-    "eslint-plugin-jsdoc": "^62.0.0",
+    "eslint-plugin-jsdoc": "^63.0.0",
     "eslint-plugin-json-schema-validator": "^6.0.0",
     "eslint-plugin-jsonc": "^3.0.0",
     "eslint-plugin-n": "^17.0.0",
