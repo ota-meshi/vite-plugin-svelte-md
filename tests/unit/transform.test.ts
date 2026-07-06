@@ -133,4 +133,66 @@ title: "\`{#if}\`"
 `;
     expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
+
+  it("parses Svelte components as HTML", async () => {
+    const md = `Basic
+
+<Component foo="foo" bar={"bar"} />
+
+Multi-line
+
+<Component
+  foo="foo"
+  bar={"bar"}
+/>
+
+With children
+
+<Component foo="foo" bar={"bar"}>
+  I'm **not** markdown
+</Component>
+
+With markdown children
+
+<Component foo="foo" bar={"bar"}>
+
+# Heading
+
+I'm **markdown** inside a component
+
+</Component>
+
+Works in lists too
+
+- <Component
+    foo="foo"
+    bar={"bar"}
+  />
+
+Does not break indent-based code blocks
+
+    <Component
+      foo="foo"
+      bar={"bar"}
+    />
+
+Inline component <Comp foo="foo" bar={"bar"} /> also works
+
+Even multiline <Comp
+  foo="foo"
+  bar={"bar"}
+/> works
+
+A component will close the current paragraph
+<Component />
+
+This one is invalid an will be </Ignored/>
+
+Example 616
+
+<a foo="bar" bam = 'baz <em>"</em>'
+_boolean zoop:33=zoop:33 />
+`;
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
+  });
 });
