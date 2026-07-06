@@ -1,5 +1,11 @@
 # vite-plugin-svelte-md
 
+## 0.7.0
+
+### Minor Changes
+
+- Support standalone `@sveltejs/enhanced-img` tags in Markdown. ([#150](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/150))
+
 ## 0.6.0
 
 ### Minor Changes
