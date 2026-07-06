@@ -1,6 +1,15 @@
 import type { MarkdownExit } from "markdown-exit";
 
-const SVELTE_TAGS_RE = /^(?:<svelte:[a-z][^>]*>|<\/svelte:[a-z]+>)/u;
+export const TAG_NAME_RE = /(?:svelte:[a-z]+|enhanced:img)/u;
+const OPEN_TAG_RE = new RegExp(
+  String.raw`<${TAG_NAME_RE.source}(?:\s[^>]*)?/?>`,
+  "u",
+);
+const CLOSE_TAG_RE = new RegExp(String.raw`</${TAG_NAME_RE.source}\s*>`, "u");
+const SVELTE_TAGS_RE = new RegExp(
+  `^(?:${OPEN_TAG_RE.source}|${CLOSE_TAG_RE.source})`,
+  "u",
+);
 /**
  * Svelte tags (e.g. `<svelte:head>`) plugin
  */
