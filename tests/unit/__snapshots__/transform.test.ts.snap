@@ -165,3 +165,19 @@ export const frontmatter = {title:"Markdown to Svelte"};
 <p><MyComponent>You can use Svelte components in Markdown</MyComponent></p>
 </div>"
 `;
+
+exports[`transform > use enhanced image tag 1`] = `
+"<script module>
+export const frontmatter = {};
+</script>
+<script>
+
+    import TestImage from './test.png?enhanced'
+
+</script>
+
+<div class="markdown-body">
+<p><enhanced:img src={TestImage} alt="some alt text" />
+<enhanced:img src={TestImage} alt="compact"/></p>
+</div>"
+`;

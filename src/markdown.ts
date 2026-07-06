@@ -1,7 +1,9 @@
 import * as devalue from "devalue";
 import { createMarkdownExit } from "markdown-exit";
 import * as yaml from "yaml";
-import markdownItSvelteTags from "./markdown-it-svelte-tags/index.ts";
+import markdownItSvelteTags, {
+  TAG_NAME_RE,
+} from "./markdown-it-svelte-tags/index.ts";
 import markdownItSvelteCurlyBracesEscape from "./markdown-it-svelte-curly-braces-escape/index.ts";
 import { toArray } from "./utils.ts";
 import { headObjToTags, preprocessHead } from "./head.ts";
@@ -11,7 +13,7 @@ const SCRIPTS_RE = /(<script[^>]*>)([\s\S]*?)<\/script>/gu;
 const SVELTE_TAGS_RE = /(<svelte:[a-z][^>]*>)([\s\S]*?)<\/svelte:[a-z]+>/gu;
 const GET_SVELTE_TAG_NAME_RE = /^svelte:[a-z]+/u;
 const IS_MODULE_CONTEXT_RE = /\bcontext\s*=\s*["']?module["']?|\bmodule\b/u;
-const IS_SVELTE_TAG_NAME_RE = /^svelte:[a-z]+$/u;
+const IS_SVELTE_TAG_NAME_RE = new RegExp(`^${TAG_NAME_RE.source}/?$`, "u");
 const FRONTMATTER_RE =
   /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/;
 

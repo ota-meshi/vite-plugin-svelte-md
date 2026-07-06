@@ -102,6 +102,42 @@ title: Markdown to Svelte
 `;
     expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
+  it("use enhanced image tag", async () => {
+    const md = `
+<script>
+    import TestImage from './test.png?enhanced'
+</script>
+<enhanced:img src={TestImage} alt="some alt text" />
+<enhanced:img src={TestImage} alt="compact"/>
+`;
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
+  });
+  it("does not autolink enhanced image tag without attributes", async () => {
+    const md = `
+<enhanced:img></enhanced:img>
+`;
+    expect(await mdToSvelte("", md)).toContain(
+      "<p><enhanced:img></enhanced:img></p>",
+    );
+  });
+  it("does not autolink self-closing enhanced image tag without attributes", async () => {
+    const md = `
+<enhanced:img/>
+`;
+    expect(await mdToSvelte("", md)).toContain("<p><enhanced:img/></p>");
+  });
+  it("does not parse enhanced image tag name prefixes", async () => {
+    const md = `
+<enhanced:imgfoo alt="x" />
+<enhanced:img-foo alt="x" />
+`;
+    const svelte = await mdToSvelte("", md);
+
+    expect(svelte).toContain("&lt;enhanced:imgfoo");
+    expect(svelte).toContain("&lt;enhanced:img-foo");
+    expect(svelte).not.toContain("<enhanced:imgfoo");
+    expect(svelte).not.toContain("<enhanced:img-foo");
+  });
   it("escape curly braces in fence", async () => {
     const md = `
 \`\`\`js
