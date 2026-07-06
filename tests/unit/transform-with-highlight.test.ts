@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import fs from "fs";
 import path from "path";
-import { createMarkdownProcessor } from "../../src/markdown";
-import { resolveOptions } from "../../src/options";
-import { highlight, asyncHighlight } from "./highlight-tools/highlight";
-import lineNumbersPlugin from "./highlight-tools/line-numbers-plugin";
+import { createMarkdownProcessor } from "../../src/markdown.ts";
+import { resolveOptions } from "../../src/options.ts";
+import { highlight, asyncHighlight } from "./highlight-tools/highlight.ts";
+import lineNumbersPlugin from "./highlight-tools/line-numbers-plugin.ts";
 
 describe("transform with highlight", () => {
   const options = resolveOptions({
