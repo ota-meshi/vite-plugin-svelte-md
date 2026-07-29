@@ -159,7 +159,7 @@ export function createMarkdownProcessor(
       );
       parsedHtml.html = `<VitePluginSvelteMdWrapper {frontmatter}>${parsedHtml.html}</VitePluginSvelteMdWrapper>`;
     } else if (wrapperClasses) {
-      parsedHtml.html = `<div class={${devalue.uneval(wrapperClasses)}}>${parsedHtml.html}</div>`;
+      parsedHtml.html = `<div class="${wrapperClasses}">${parsedHtml.html}</div>`;
     }
 
     if (headEnabled && head) {
