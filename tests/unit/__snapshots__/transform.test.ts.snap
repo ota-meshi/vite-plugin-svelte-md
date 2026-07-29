@@ -181,3 +181,14 @@ export const frontmatter = {};
 <enhanced:img src={TestImage} alt="compact"/></p>
 </div>"
 `;
+
+exports[`transform > wraps with wrapper component 1`] = `
+"<script module>
+import VitePluginSvelteMdWrapper from "#lib/Md.svelte";
+export const frontmatter = {title:"Hey"};
+</script>
+
+
+<VitePluginSvelteMdWrapper {frontmatter}><h1>Hello</h1>
+</VitePluginSvelteMdWrapper>"
+`;

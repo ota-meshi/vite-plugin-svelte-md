@@ -169,4 +169,19 @@ title: "\`{#if}\`"
 `;
     expect(await mdToSvelte("", md)).toMatchSnapshot();
   });
+
+  it("wraps with wrapper component", async () => {
+    const options = resolveOptions({
+      headEnabled: false,
+      wrapperComponent: "#lib/Md.svelte",
+    });
+    const mdToSvelte = createMarkdownProcessor(options);
+    const md = `---
+title: Hey
+---
+
+# Hello
+`;
+    expect(await mdToSvelte("", md)).toMatchSnapshot();
+  });
 });
