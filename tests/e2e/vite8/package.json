@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^7.0.0-next",
+    "@sveltejs/vite-plugin-svelte": "^7.2.0",
     "svelte": "^5",
-    "vite": "^8.0.0-beta",
+    "vite": "^8.1.5",
     "vite-plugin-svelte-md": "*"
   }
 }
