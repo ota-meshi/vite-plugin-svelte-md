@@ -36,14 +36,20 @@ export interface Options {
    */
   wrapperClasses?: string | string[];
 
+  /**
+   * Path to a Svelte component to import and use as a wrapper for the Markdown content
+   *
+   * If set, `wrapperClasses` will be ignored
+   */
+  wrapperComponent?: string;
+
   include?: (string | RegExp)[] | string | RegExp | undefined;
   exclude?: (string | RegExp)[] | string | RegExp | undefined;
 }
 
-export type ResolvedOptions = Required<
-  Omit<Options, "include" | "exclude" | "use">
-> &
-  Pick<Options, "include" | "exclude" | "use"> & { wrapperClasses: string };
+type PreservedOptions = "include" | "exclude" | "use" | "wrapperComponent";
+export type ResolvedOptions = Required<Omit<Options, PreservedOptions>> &
+  Pick<Options, PreservedOptions> & { wrapperClasses: string };
 
 /**
  * Resolve options

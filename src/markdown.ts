@@ -136,16 +136,13 @@ export function createMarkdownProcessor(
 
   return async (id: string, text: string) => {
     const raw = text.trimEnd();
-    const { wrapperClasses, headEnabled } = options;
+    const { wrapperComponent, wrapperClasses, headEnabled } = options;
 
     const parsedFrontmatter = grayMatter(raw);
 
-    let html = await markdownIt.renderAsync(parsedFrontmatter.content, { id });
-
-    if (wrapperClasses) {
-      html = `<div class="${wrapperClasses}">${html}</div>`;
-    }
-
+    const html = await markdownIt.renderAsync(parsedFrontmatter.content, {
+      id,
+    });
     const parsedHtml = parseHtml(html);
 
     const { head, frontmatter } = frontmatterPreprocess(
@@ -155,6 +152,16 @@ export function createMarkdownProcessor(
     parsedHtml.moduleContext.prepend(
       `export const frontmatter = ${devalue.uneval(frontmatter)};`,
     );
+
+    if (wrapperComponent) {
+      parsedHtml.moduleContext.prepend(
+        `import VitePluginSvelteMdWrapper from ${devalue.uneval(wrapperComponent)};`,
+      );
+      parsedHtml.html = `<VitePluginSvelteMdWrapper {frontmatter}>${parsedHtml.html}</VitePluginSvelteMdWrapper>`;
+    } else if (wrapperClasses) {
+      parsedHtml.html = `<div class="${wrapperClasses}">${parsedHtml.html}</div>`;
+    }
+
     if (headEnabled && head) {
       let svelteHead = parsedHtml.svelteTags.find(
         (tag) => tag.tagName === "svelte:head",

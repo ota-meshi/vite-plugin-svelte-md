@@ -138,6 +138,7 @@ svelteMd({
   use: (md) => { /* ... */ },
   markdownItUses: [],
   wrapperClasses: "markdown-body",
+  wrapperComponent: "#lib/markdown/Wrapper.svelte", // Incompatible with wrapperClasses
 });
 ```
 
@@ -183,6 +184,33 @@ You should favor `use` over `markdownItUses` as it enables better auto-completio
 #### `wrapperClasses`
 
 The class name of the div that wraps the content.
+
+#### `wrapperComponent`
+
+The path to a Svelte component to wrap the content. It will be resolved by Vite so you can use a path alias, *e.g.* `"#lib/markdown/Wrapper.svelte"`.
+
+If set, `wrapperClasses` will be ignored.
+
+The wrapper component will receive two props: `frontmatter` and `children`:
+
+```svelte
+<script lang="ts">
+  import type { Snippet } from "svelte";
+
+  // You can import CSS resources to style your Markdown content
+  import "./markdown.css";
+
+  const { frontmatter, children }: {
+    frontmatter: { title: string };
+    children: Snippet
+  } = $props();
+</script>
+
+<h1>{frontmatter.title}</h1>
+
+<!-- Render the resulting HTML content -->
+{@render children()}
+```
 
 ## 🎏 Comparison
 
@@ -248,10 +276,10 @@ The class name of the div that wraps the content.
     <td><a href="https://mdsvex.pngwn.io/docs#custom-components">✅</a></td>
   </tr>
   <tr>
-    <td>Layout</td>
-    <td>Optional wrapper <code>&lt;div></code> with classes</td>
-    <td>Svelte components, configurable in frontmatter</td>
-  </td>
+    <td>Custom Svelte wrapper</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
   <tr>
     <td>Fancy typography replacements<br>(e.g. <code>...</code> → <code>…</code>)</td>
     <td>✅</td>
