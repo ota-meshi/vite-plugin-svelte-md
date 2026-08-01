@@ -1,5 +1,15 @@
 # vite-plugin-svelte-md
 
+## 0.8.0
+
+### Minor Changes
+
+- Added a new `wrapperComponent` option to specify a Svelte component to wrap the rendered Markdown content. ([#155](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/155))
+
+- Dropped support for EOL Vite versions 3, 4, and 5. Minimum supported Vite version is now 6.4. ([#156](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/156))
+
+- Dropped support for EOL Node.js version 20. Minimum supported Node.js version is now 22. ([#156](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/156))
+
 ## 0.7.0
 
 ### Minor Changes
