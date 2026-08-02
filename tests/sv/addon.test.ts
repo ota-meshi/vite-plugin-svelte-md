@@ -27,7 +27,12 @@ test.for(testCases)(
     expect(pkg.devDependencies).toHaveProperty("vite-plugin-svelte-md");
 
     if (testCase.variant.includes("kit")) {
-      const { close, url } = await prepareServer({ cwd, page });
+      const { close, url } = await prepareServer({
+        cwd,
+        page,
+        buildCommand: "npm run build",
+        previewCommand: "npm run preview",
+      });
       // kill server process when we're done
       ctx.onTestFinished(close);
 
