@@ -1,5 +1,5 @@
 ---
-"vite-plugin-svelte-md": minor
+"vite-plugin-svelte-md": patch
 ---
 
-Added a new `wrapperComponent` option to specify a Svelte component to wrap the rendered Markdown content.
+`vite-plugin-svelte-md` can now be installed automatically with `npx sv add vite-plugin-svelte-md`.
