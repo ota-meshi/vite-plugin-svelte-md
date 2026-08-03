@@ -1,4 +1,4 @@
-import { defineAddon, defineAddonOptions } from "sv";
+import { defineAddon } from "sv";
 import {
   dedent,
   svelteConfig,
@@ -6,16 +6,16 @@ import {
   color,
   createPrinter,
   resolveCommandArray,
+  resolveLibPrefix,
 } from "@sveltejs/sv-utils";
 import pkg from "../../package.json" with { type: "json" };
 
-const options = defineAddonOptions().build();
-
 export default defineAddon({
   id: "vite-plugin-svelte-md",
-  options,
+  options: {},
 
-  run: ({ file, sv, cwd, isKit, language }) => {
+  run: ({ sv, cwd, file, isKit, language, directory, dependencyVersion }) => {
+    const lib = resolveLibPrefix(dependencyVersion("@sveltejs/kit"));
     const [kit, ts] = createPrinter(isKit, language === "ts");
     sv.devDependency("vite-plugin-svelte-md", `^${pkg.version}`);
 
@@ -27,7 +27,7 @@ export default defineAddon({
           as: "mdPlugin",
         });
         js.vite.addPlugin(ast, {
-          code: `mdPlugin(${kit(`{wrapperComponent: "$lib/markdown/Wrapper.svelte",}`)})`,
+          code: `mdPlugin(${kit(`{ wrapperComponent: "${lib}/markdown/Wrapper.svelte" }`)})`,
           mode: "prepend",
         });
       }),
@@ -42,7 +42,7 @@ export default defineAddon({
 
     if (isKit) {
       sv.file(
-        "src/lib/markdown/Wrapper.svelte",
+        `${directory.lib}/markdown/Wrapper.svelte`,
         () => dedent`
           <script${ts(' lang="ts"')}>
             ${ts('import type { Snippet } from "svelte"')};
@@ -69,7 +69,7 @@ export default defineAddon({
       );
 
       sv.file(
-        "src/routes/demo/markdown/+page.md",
+        `${directory.kitRoutes}/demo/markdown/+page.md`,
         () => dedent`
           ---
           title: Markdown Page

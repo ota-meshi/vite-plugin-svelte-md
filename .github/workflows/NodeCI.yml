@@ -33,8 +33,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright browsers and pnpm
+        run: npx playwright install --with-deps chromium && npm install -g pnpm@11
       - name: Test
         run: npm test
   test-and-coverage:
