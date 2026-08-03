@@ -71,45 +71,28 @@ Output:
 
 ## 💿 Installation
 
+Fully automated installation with [`sv add`](https://svelte.dev/docs/cli/sv-add):
+
+```bash
+npx sv add vite-plugin-svelte-md
+```
+
+<details>
+<summary>Manual installation instructions</summary>
+
+Install `vite-plugin-svelte-md` with your favorite package manager:
+
 ```bash
 npm install --save-dev vite-plugin-svelte-md
+# or
+yarn add --dev vite-plugin-svelte-md
+# or
+pnpm add --save-dev vite-plugin-svelte-md
 ```
 
-## 📖 Usage
+### With [SvelteKit](https://svelte.dev/docs/kit/introduction)
 
-### with [Vite]
-
-Add it to `vite.config.js`
-
-```ts
-// vite.config.js
-import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
-import svelteMd from "vite-plugin-svelte-md";
-
-export default defineConfig({
-  plugins: [
-    svelteMd(), // <--
-    svelte({
-      extensions: [".svelte", ".md"], // <--
-    }),
-  ],
-});
-```
-
-### with [SvelteKit]
-
-Edit `svelte.config.js`
-
-```js
-// svelte.config.js
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-  extensions: [".svelte", ".md"], // <--
-};
-```
-
-Add it to `vite.config.js`
+Update your `vite.config.js`:
 
 ```ts
 // vite.config.js
@@ -119,14 +102,35 @@ import svelteMd from "vite-plugin-svelte-md";
 
 export default defineConfig({
   plugins: [
-    svelteMd(), // <--
-    sveltekit(),
+    svelteMd(), // ⬅️
+    sveltekit({
+      extensions: [".svelte", ".md"], // ⬅️
+    }),
   ],
 });
 ```
 
-[sveltekit]: https://kit.svelte.dev/
-[vite]: https://vitejs.dev/
+### With [Vite](https://vite.dev/)
+
+Update your `vite.config.js`:
+
+```ts
+// vite.config.js
+import { defineConfig } from "vite";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
+import svelteMd from "vite-plugin-svelte-md";
+
+export default defineConfig({
+  plugins: [
+    svelteMd(), // ⬅️
+    svelte({
+      extensions: [".svelte", ".md"], // ⬅️
+    }),
+  ],
+});
+```
+
+</details>
 
 ### Options
 
