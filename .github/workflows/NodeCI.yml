@@ -18,6 +18,7 @@ jobs:
       run: npm run build
     - name: Lint
       run: npm run lint
+
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -35,20 +36,18 @@ jobs:
         run: npm run build
       - name: Install Playwright browsers and pnpm
         run: npx playwright install --with-deps chromium && npm install -g pnpm@11
-      - name: Test
-        run: npm test
-  test-and-coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-      - name: Install Packages
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Test
+
+      # Latest Node version, report coverage
+      - name: Test with coverage
+        if: matrix.node-version == 26
         run: npm run cover
       - name: Coveralls GitHub Action
+        if: matrix.node-version == 26
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Other versions, run tests without coverage
+      - name: Test
+        if: matrix.node-version != 26
+        run: npm test
