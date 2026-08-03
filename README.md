@@ -196,7 +196,7 @@ The path to a Svelte component to wrap the content. It will be resolved by Vite 
 
 If set, `wrapperClasses` will be ignored.
 
-The wrapper component will receive two props: `frontmatter` and `children`:
+The wrapper component will receive two props, `frontmatter` and `children`:
 
 ```svelte
 <script lang="ts">
