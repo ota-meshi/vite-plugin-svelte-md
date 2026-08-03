@@ -17,17 +17,23 @@ export default defineAddon({
   run: ({ sv, cwd, file, isKit, language, directory, dependencyVersion }) => {
     const lib = resolveLibPrefix(dependencyVersion("@sveltejs/kit"));
     const [kit, ts] = createPrinter(isKit, language === "ts");
-    sv.devDependency("vite-plugin-svelte-md", `^${pkg.version}`);
+    sv.devDependency(
+      "vite-plugin-svelte-md",
+      // Use the local build of the package when running the tests
+      globalThis?.process?.env?.VITEST
+        ? `file:${process.cwd()}`
+        : `^${pkg.version}`,
+    );
 
     sv.file(
       file.viteConfig,
       transforms.script(({ ast, js }) => {
         js.imports.addDefault(ast, {
           from: "vite-plugin-svelte-md",
-          as: "mdPlugin",
+          as: "svelteMd",
         });
         js.vite.addPlugin(ast, {
-          code: `mdPlugin(${kit(`{ wrapperComponent: "${lib}/markdown/Wrapper.svelte" }`)})`,
+          code: `svelteMd(${kit(`{ wrapperComponent: "${lib}/markdown/Wrapper.svelte" }`)})`,
           mode: "prepend",
         });
       }),

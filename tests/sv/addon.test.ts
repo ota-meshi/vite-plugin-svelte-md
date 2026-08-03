@@ -30,9 +30,11 @@ test.for(testCases)(
       const { close, url } = await prepareServer({ cwd, page, expect });
       ctx.onTestFinished(close); // Kill server process when we're done
 
-      await page.goto(new URL("markdown", url).toString());
+      await page.goto(`${url}demo/markdown`, { timeout: 5000 });
 
-      const snapshot = await page.locator("article").ariaSnapshot();
+      const snapshot = await page
+        .locator("article")
+        .ariaSnapshot({ timeout: 5000 });
       expect(snapshot).toMatchInlineSnapshot(`
         "- article:
           - heading "Markdown Page" [level=1]
@@ -53,7 +55,11 @@ test.for(testCases)(
 
       const maxWidth = await page
         .locator("article")
-        .evaluate((el) => el.computedStyleMap().get("max-width")?.toString());
+        .evaluate(
+          (el, prop) => el.computedStyleMap().get(prop)?.toString(),
+          "max-width",
+          { timeout: 5000 },
+        );
       expect(maxWidth).toBe("640px");
     }
   },
