@@ -130,6 +130,7 @@ export default defineConfig({
 });
 ```
 
+<hr/>
 </details>
 
 ### Options
