@@ -5,6 +5,7 @@
     "target": "ESNext",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Bundler",
+    "skipLibCheck": true,
 
     // Code Quality
     "strict": true,
@@ -18,5 +19,5 @@
     "declaration": true,
     "rewriteRelativeImportExtensions": true
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "tools/**/*.ts"]
+  "include": ["src/**/*.ts", "tests/**/*.ts", "tools/**/*.ts", "*.ts"]
 }

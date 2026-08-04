@@ -11,6 +11,10 @@
     "."
   ],
   "exports": {
+    "./sv": {
+      "types": "./lib/sv/index.d.ts",
+      "default": "./lib/sv/index.js"
+    },
     ".": {
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
@@ -41,7 +45,8 @@
     "svelte",
     "markdown",
     "markdown-it",
-    "markdown-exit"
+    "markdown-exit",
+    "sv-add"
   ],
   "author": "Yosuke Ota",
   "funding": "https://github.com/sponsors/ota-meshi",
@@ -51,7 +56,17 @@
   },
   "homepage": "https://github.com/ota-meshi/vite-plugin-svelte-md#readme",
   "peerDependencies": {
+    "@sveltejs/sv-utils": "*",
+    "sv": "*",
     "vite": "^6.4.0 || ^7.3.0 || ^8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@sveltejs/sv-utils": {
+      "optional": true
+    },
+    "sv": {
+      "optional": true
+    }
   },
   "dependencies": {
     "devalue": "^5.8.2",
@@ -62,13 +77,15 @@
     "@changesets/cli": "^2.29.5",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.2",
     "@ota-meshi/eslint-plugin": "^0.20.0",
+    "@playwright/test": "^1.62.0",
+    "@sveltejs/sv-utils": "^0.3.3",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@types/escape-html": "^1.0.1",
     "@types/node": "^24.0.0",
     "@types/prismjs": "^1.16.6",
     "@typescript-eslint/eslint-plugin": "^8.62.1",
     "@typescript-eslint/parser": "^8.62.1",
-    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/coverage-v8": "^4.1.10",
     "escape-html": "^1.0.3",
     "eslint": "^10.6.0",
     "eslint-config-prettier": "^10.0.0",
@@ -84,10 +101,11 @@
     "prism-svelte": "^0.5.0",
     "prismjs": "^1.25.0",
     "rimraf": "^6.0.0",
+    "sv": "^0.17.0",
     "svelte": "^5.0.0",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.62.1",
     "vite": "^8.0.0",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.10"
   }
 }
