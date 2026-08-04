@@ -45,7 +45,8 @@
     "svelte",
     "markdown",
     "markdown-it",
-    "markdown-exit"
+    "markdown-exit",
+    "sv-add"
   ],
   "author": "Yosuke Ota",
   "funding": "https://github.com/sponsors/ota-meshi",
