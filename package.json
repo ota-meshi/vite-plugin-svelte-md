@@ -77,15 +77,15 @@
     "@changesets/cli": "^2.29.5",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.2",
     "@ota-meshi/eslint-plugin": "^0.20.0",
-    "@playwright/test": "^1.62.0",
-    "@sveltejs/sv-utils": "^0.3.3",
+    "@playwright/test": "^1.64.0",
+    "@sveltejs/sv-utils": "^1.0.2",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@types/escape-html": "^1.0.1",
     "@types/node": "^24.0.0",
     "@types/prismjs": "^1.16.6",
     "@typescript-eslint/eslint-plugin": "^8.62.1",
     "@typescript-eslint/parser": "^8.62.1",
-    "@vitest/coverage-v8": "^4.1.10",
+    "@vitest/coverage-v8": "^5.0.4",
     "escape-html": "^1.0.3",
     "eslint": "^10.6.0",
     "eslint-config-prettier": "^10.0.0",
@@ -101,11 +101,11 @@
     "prism-svelte": "^0.5.0",
     "prismjs": "^1.25.0",
     "rimraf": "^6.0.0",
-    "sv": "^0.17.0",
+    "sv": "^1.1.1",
     "svelte": "^5.0.0",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.62.1",
     "vite": "^8.0.0",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.4"
   }
 }
