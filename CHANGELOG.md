@@ -1,5 +1,11 @@
 # vite-plugin-svelte-md
 
+## 0.8.1
+
+### Patch Changes
+
+- `vite-plugin-svelte-md` can now be installed automatically with `npx sv add vite-plugin-svelte-md`. ([#157](https://github.com/ota-meshi/vite-plugin-svelte-md/pull/157))
+
 ## 0.8.0
 
 ### Minor Changes
