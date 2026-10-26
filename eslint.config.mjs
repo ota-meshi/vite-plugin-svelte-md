@@ -89,6 +89,7 @@ export default defineConfig([
     },
   },
   globalIgnores([
+    ".test-output",
     ".nyc_output",
     "coverage",
     "lib",

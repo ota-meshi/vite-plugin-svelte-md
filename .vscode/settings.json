@@ -8,11 +8,9 @@
     "jsonc",
     "svelte"
   ],
-  "typescript.validate.enable": true,
-  "javascript.validate.enable": false,
-  "typescript.tsdk": "./node_modules/typescript/lib",
+  "js/ts.validate.enabled": true,
+  "js/ts.tsdk.path": "./node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
-  },
-  "vetur.validation.template": false
+  }
 }
