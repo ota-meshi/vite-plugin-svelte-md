@@ -81,7 +81,7 @@
     "@sveltejs/sv-utils": "^1.0.2",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@types/escape-html": "^1.0.1",
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.0.0",
     "@types/prismjs": "^1.16.6",
     "@typescript-eslint/eslint-plugin": "^8.62.1",
     "@typescript-eslint/parser": "^8.62.1",
