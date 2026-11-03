@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "devalue": "^6.0.0",
-    "markdown-exit": "^1.1.0-beta.2",
+    "markdown-exit": "^2.0.0",
     "yaml": "^2.9.0 || ^3.0.0-0"
   },
   "devDependencies": {
